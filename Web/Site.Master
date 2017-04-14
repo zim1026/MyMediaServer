@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Web.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+     <!--
+
+         @@. @@  @@@@@@#   ,@@@@@@@    ;@@@@    '@@@@@@@#  @@@@   @@@@   @@@    ;@@@@@  @@@    @@@  @@@    '@@@@@@       @@@@:    @@@@    @@@;
+        `@@ +@@  @@#@@@@@  ,@#@@@@@    @@+#@    '@@@#@@@@  @@@@   @@@@   @@@   @@@#@@@  @@@    @@@  @@@   @@#@@@@@@      @@@+@    @@@@;   @@@'
+        #@# @@`  @@@++#@@+ .@@+@@@#    @@#+@'   '@@'#+@@@  @'@@` `@@+@   @'#  #@@@@@@@  ##@    @@@  @'#  +#@@@#@@@@+    '@@#@@    @#'#@   @@@;
+      @@@##@@@@@ @@@  :@@# .@@@       '@#,@@@      @;@     @+:@+ +@';@   @@@  @@@#   '` @@@    @@@` @@@  @@#'   ,#      @@@,@@:   @@+@#@  @@@;
+     +@@@#@@#@@@ @@@::@@@  .@##,::    @@@ @@@      @@@.   `@+,@@ @@ +@:  @@@ ,@@@       @@+#@#@##@` @@@ .@@@   `  ``    @@@ @@@   @+#@@@+ #@@:
+       '#: ##    @@#@@@@+  .@##@@@'   @@@ :@@;     @@@.   ;@';@# @+'@@+  @@@ +@@@       @@#@@@@#+@` @@@ :@@@  @@@@@@'  +@@: @@@   @@+:@@@`#@@;
+     +'##'''@;;  @@@@@@@@@ :@@#@@@'  +@';  @@@     @@@`   #@@ @@@++.@@@  @@@ '@@@       @@#@@@@@@@` @@@ :@@@  @@@@@@:  @@@  :@@'  @@@: @@@#@@;
+    '@@@@'@@#@@  @@@   #@@ ,@@@      @@;@@@#@@     @@@.   @@# @'+@@ @@@  @@@ .@@@       @@@    @@@  @@@  @@@   ,`@@@`  @@@@@@+@@  @@@: :@@+'@'
+    '#@@@;@@+'   @#@   @@@ ,@##      @#@@@@@@@+    @@#.   @@@ :@@@: @@@  @#@  @@@@, .@. @@@    @#@  @#@  @@@@   ,@@@  @@+@@@@@@@  @#@;  @@+#@;
+      @@  @@     @@@@@+@@@ :@@+@@@@ @@@@+;''@@@    @@@.   @@@  @@@  @@@  @@@  :@@@#@@@` @@@    @@@  @@@  `@@@@@@@@@,  @@@++;'@@@' @@@:   @@@@;
+     ;@@ @@:     @@@@@@@@. :@@@@@@@ @@@,    @@@`   @@@`   @@@  @@@  @@@. @@@   ;@@@@@@` @@@    @@@  @@@   `@@@@@@@'  .@@@    ,@@@ @@@,   `@@@:
+     ;#` ''      ::;+';,    ###;;;: ##+     ;'+    :';    ,:.  :;.  .;+  '::     +@@@:  :,,    ;':  '::     ,#@@'    ,+';     +;+ :::     `,:
+
+    -->
+
+    <title></title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link type="text/css" href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="Content/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="Content/Custom.css" />
+
+    <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav id="MasterNavBar" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand">My Media Server</a>
+                    </div>
+                    <ul id="MasterNavBarLinks" class="nav navbar-nav">
+                        <li id="MasterNavBarHomeLink"><a href="Default.aspx">Home</a></li>
+                        <li id="MasterNavBarPlaylistLink"><a href="Playlist.aspx">Play List</a></li>
+                        <% if(IsAdmin) %>
+                        <% { %>    
+                            <li id="MasterNavBarUploadsLink"><a href="FileUpload.aspx">Uploads</a></li>    
+                            <li id="MasterNavBarUserManagementLink"><a href="UserSecurity.aspx">User Management</a></li>
+                        <% } %>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right">
+                        <li><a href="Logout.aspx"><%=Username %> - Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <asp:ContentPlaceHolder ID="Content" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <div id="loading" style="overflow:hidden">
+                <img src="Content/images/loading-spinner-bug.gif" height="200" width="200"
+                    style="display:block; margin-left:25px" />
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.dataTables.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server">
+        <script type="text/javascript" src="Site.js"></script>
+    </asp:ContentPlaceHolder>
+</body>
+
+</html>

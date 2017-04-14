@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MediaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.ALBUM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ALBUM">
+          <Key>
+            <PropertyRef Name="ALBUM_ID" />
+            <PropertyRef Name="ARTIST_ID" />
+            <PropertyRef Name="ALBUM_NAME" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ALBUM_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ALBUM_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.ARTIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ARTIST">
+          <Key>
+            <PropertyRef Name="ARTIST_ID" />
+            <PropertyRef Name="ARTIST_NAME" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ARTIST_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.EXTERNAL_IP_ADDRESS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EXTERNAL_IP_ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.LOG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+            <PropertyRef Name="ENTRY" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="LOG_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ENTRY" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.SONG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SONG">
+          <Key>
+            <PropertyRef Name="SONG_ID" />
+            <PropertyRef Name="SONG_TITLE" />
+            <PropertyRef Name="ALBUM_ART_FLAG" />
+            <PropertyRef Name="LYRICS_FLAG" />
+            <PropertyRef Name="ITUNES_FLAG" />
+            <PropertyRef Name="ID3V1_FLAG" />
+            <PropertyRef Name="ID3V2_FLAG" />
+            <PropertyRef Name="UPDATE_TAGS_FLAG" />
+            <PropertyRef Name="CREATE_DATE" />
+            <PropertyRef Name="RECOMMEND_FLAG" />
+            <PropertyRef Name="UPDATE_FILE_FLAG" />
+            <PropertyRef Name="FAVORITES_FLAG" />
+            <PropertyRef Name="PLAY_COUNT" />
+            <PropertyRef Name="DOWNLOAD_COUNT" />
+          </Key>
+          <Property Name="SONG_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_ID" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="ALBUM_ID" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="SONG_TITLE" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ALBUM_ART" Type="varbinary(max)" />
+          <Property Name="LYRICS" Type="nvarchar(max)" />
+          <Property Name="YEAR" Type="nvarchar" MaxLength="25" />
+          <Property Name="GENRE" Type="nvarchar" MaxLength="100" />
+          <Property Name="TRACK_NUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="DISC_NUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="ALBUM_ART_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LYRICS_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ITUNES_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V1_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V1_ARTIST" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID3V1_ALBUM" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID3V1_TITLE" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID3V2_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V2_ARTIST" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID3V2_ALBUM" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID3V2_TITLE" Type="nvarchar" MaxLength="255" />
+          <Property Name="UPDATE_TAGS_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="NEW_ALBUM" Type="nvarchar" MaxLength="255" />
+          <Property Name="NEW_TITLE" Type="nvarchar" MaxLength="255" />
+          <Property Name="NEW_TRACK_NUM" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="NEW_GENRE" Type="nvarchar" MaxLength="50" />
+          <Property Name="FILENAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="ABS_FILE_PATH" Type="nvarchar" MaxLength="1000" />
+          <Property Name="REL_FILE_PATH" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="RECOMMEND_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="UPDATE_FILE_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="OLD_ART" Type="varbinary(max)" />
+          <Property Name="FAVORITES_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="VIDEO_PATH" Type="nvarchar" MaxLength="255" />
+          <Property Name="FILE_SIZE" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="DURATION" Type="nvarchar" MaxLength="30" />
+          <Property Name="SAMPLE_RATE" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="BITRATE" Type="numeric" Precision="38" Scale="0" />
+          <Property Name="BACK_COVER" Type="varbinary(max)" />
+          <Property Name="ARTIST_IMAGE" Type="varbinary(max)" />
+          <Property Name="BAND" Type="varbinary(max)" />
+          <Property Name="PLAY_COUNT" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="DOWNLOAD_COUNT" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="NEW_ARTIST" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMMENTS" Type="nvarchar" MaxLength="4000" />
+          <Property Name="COMPOSER" Type="nvarchar" MaxLength="500" />
+          <Property Name="CONDUCTOR" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.USER_SECURITY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USER_SECURITY">
+          <Key>
+            <PropertyRef Name="USER_SECURITY_ID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="LOCKED_FLAG" />
+            <PropertyRef Name="ACTIVE_FLAG" />
+            <PropertyRef Name="LOGIN_COUNT" />
+            <PropertyRef Name="LIFETIME_FAILURE_COUNT" />
+            <PropertyRef Name="LOGIN_FAILURE_COUNT" />
+            <PropertyRef Name="PASSWORD_CHANGED_COUNT" />
+            <PropertyRef Name="CREATE_DATE" />
+            <PropertyRef Name="ADMIN_FLAG" />
+          </Key>
+          <Property Name="USER_SECURITY_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PASSWORD" Type="varbinary" MaxLength="2000" Nullable="false" />
+          <Property Name="LOCKED_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LOGIN_COUNT" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_LOGIN_DATE" Type="date" />
+          <Property Name="LIFETIME_FAILURE_COUNT" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LOGIN_FAILURE_COUNT" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_FAILURE_DATE" Type="date" />
+          <Property Name="PASSWORD_CHANGED_COUNT" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PASSWORD_CHANGED_DATE" Type="date" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="ADMIN_FLAG" Type="numeric" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="PREV_TO_LAST_LOGIN_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Media.MP3.USER_SELECTION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="USER_SELECTION">
+          <Key>
+            <PropertyRef Name="USER_SECURITY_ID" />
+            <PropertyRef Name="SONG_ID" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="USER_SECURITY_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SONG_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="date" />
+        </EntityType>
+        <EntityContainer Name="MediaModelStoreContainer">
+          <EntitySet Name="ALBUM" EntityType="Self.ALBUM" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [ALBUM].[ALBUM_ID] AS [ALBUM_ID], 
+    [ALBUM].[ARTIST_ID] AS [ARTIST_ID], 
+    [ALBUM].[ALBUM_NAME] AS [ALBUM_NAME], 
+    [ALBUM].[CREATE_DATE] AS [CREATE_DATE], 
+    [ALBUM].[UPDATE_DATE] AS [UPDATE_DATE]
+    FROM [MP3].[ALBUM] AS [ALBUM]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ARTIST" EntityType="Self.ARTIST" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [ARTIST].[ARTIST_ID] AS [ARTIST_ID], 
+    [ARTIST].[ARTIST_NAME] AS [ARTIST_NAME], 
+    [ARTIST].[CREATE_DATE] AS [CREATE_DATE], 
+    [ARTIST].[UPDATE_DATE] AS [UPDATE_DATE]
+    FROM [MP3].[ARTIST] AS [ARTIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EXTERNAL_IP_ADDRESS" EntityType="Self.EXTERNAL_IP_ADDRESS" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [EXTERNAL_IP_ADDRESS].[ADDRESS] AS [ADDRESS], 
+    [EXTERNAL_IP_ADDRESS].[CREATE_DATE] AS [CREATE_DATE], 
+    [EXTERNAL_IP_ADDRESS].[UPDATE_DATE] AS [UPDATE_DATE]
+    FROM [MP3].[EXTERNAL_IP_ADDRESS] AS [EXTERNAL_IP_ADDRESS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LOG" EntityType="Self.LOG" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [LOG].[LOG_ID] AS [LOG_ID], 
+    [LOG].[ENTRY] AS [ENTRY], 
+    [LOG].[CREATE_DATE] AS [CREATE_DATE], 
+    [LOG].[UPDATE_DATE] AS [UPDATE_DATE]
+    FROM [MP3].[LOG] AS [LOG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SONG" EntityType="Self.SONG" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [SONG].[SONG_ID] AS [SONG_ID], 
+    [SONG].[ARTIST_ID] AS [ARTIST_ID], 
+    [SONG].[ALBUM_ID] AS [ALBUM_ID], 
+    [SONG].[SONG_TITLE] AS [SONG_TITLE], 
+    [SONG].[ALBUM_ART] AS [ALBUM_ART], 
+    [SONG].[LYRICS] AS [LYRICS], 
+    [SONG].[YEAR] AS [YEAR], 
+    [SONG].[GENRE] AS [GENRE], 
+    [SONG].[TRACK_NUM] AS [TRACK_NUM], 
+    [SONG].[DISC_NUM] AS [DISC_NUM], 
+    [SONG].[ALBUM_ART_FLAG] AS [ALBUM_ART_FLAG], 
+    [SONG].[LYRICS_FLAG] AS [LYRICS_FLAG], 
+    [SONG].[ITUNES_FLAG] AS [ITUNES_FLAG], 
+    [SONG].[ID3V1_FLAG] AS [ID3V1_FLAG], 
+    [SONG].[ID3V1_ARTIST] AS [ID3V1_ARTIST], 
+    [SONG].[ID3V1_ALBUM] AS [ID3V1_ALBUM], 
+    [SONG].[ID3V1_TITLE] AS [ID3V1_TITLE], 
+    [SONG].[ID3V2_FLAG] AS [ID3V2_FLAG], 
+    [SONG].[ID3V2_ARTIST] AS [ID3V2_ARTIST], 
+    [SONG].[ID3V2_ALBUM] AS [ID3V2_ALBUM], 
+    [SONG].[ID3V2_TITLE] AS [ID3V2_TITLE], 
+    [SONG].[UPDATE_TAGS_FLAG] AS [UPDATE_TAGS_FLAG], 
+    [SONG].[NEW_ALBUM] AS [NEW_ALBUM], 
+    [SONG].[NEW_TITLE] AS [NEW_TITLE], 
+    [SONG].[NEW_TRACK_NUM] AS [NEW_TRACK_NUM], 
+    [SONG].[NEW_GENRE] AS [NEW_GENRE], 
+    [SONG].[FILENAME] AS [FILENAME], 
+    [SONG].[ABS_FILE_PATH] AS [ABS_FILE_PATH], 
+    [SONG].[REL_FILE_PATH] AS [REL_FILE_PATH], 
+    [SONG].[CREATE_DATE] AS [CREATE_DATE], 
+    [SONG].[UPDATE_DATE] AS [UPDATE_DATE], 
+    [SONG].[RECOMMEND_FLAG] AS [RECOMMEND_FLAG], 
+    [SONG].[UPDATE_FILE_FLAG] AS [UPDATE_FILE_FLAG], 
+    [SONG].[OLD_ART] AS [OLD_ART], 
+    [SONG].[FAVORITES_FLAG] AS [FAVORITES_FLAG], 
+    [SONG].[VIDEO_PATH] AS [VIDEO_PATH], 
+    [SONG].[FILE_SIZE] AS [FILE_SIZE], 
+    [SONG].[DURATION] AS [DURATION], 
+    [SONG].[SAMPLE_RATE] AS [SAMPLE_RATE], 
+    [SONG].[BITRATE] AS [BITRATE], 
+    [SONG].[BACK_COVER] AS [BACK_COVER], 
+    [SONG].[ARTIST_IMAGE] AS [ARTIST_IMAGE], 
+    [SONG].[BAND] AS [BAND], 
+    [SONG].[PLAY_COUNT] AS [PLAY_COUNT], 
+    [SONG].[DOWNLOAD_COUNT] AS [DOWNLOAD_COUNT], 
+    [SONG].[NEW_ARTIST] AS [NEW_ARTIST], 
+    [SONG].[COMMENTS] AS [COMMENTS], 
+    [SONG].[COMPOSER] AS [COMPOSER], 
+    [SONG].[CONDUCTOR] AS [CONDUCTOR]
+    FROM [MP3].[SONG] AS [SONG]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="USER_SECURITY" EntityType="Self.USER_SECURITY" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [USER_SECURITY].[USER_SECURITY_ID] AS [USER_SECURITY_ID], 
+    [USER_SECURITY].[USERNAME] AS [USERNAME], 
+    [USER_SECURITY].[PASSWORD] AS [PASSWORD], 
+    [USER_SECURITY].[LOCKED_FLAG] AS [LOCKED_FLAG], 
+    [USER_SECURITY].[ACTIVE_FLAG] AS [ACTIVE_FLAG], 
+    [USER_SECURITY].[LOGIN_COUNT] AS [LOGIN_COUNT], 
+    [USER_SECURITY].[LAST_LOGIN_DATE] AS [LAST_LOGIN_DATE], 
+    [USER_SECURITY].[LIFETIME_FAILURE_COUNT] AS [LIFETIME_FAILURE_COUNT], 
+    [USER_SECURITY].[LOGIN_FAILURE_COUNT] AS [LOGIN_FAILURE_COUNT], 
+    [USER_SECURITY].[LAST_FAILURE_DATE] AS [LAST_FAILURE_DATE], 
+    [USER_SECURITY].[PASSWORD_CHANGED_COUNT] AS [PASSWORD_CHANGED_COUNT], 
+    [USER_SECURITY].[PASSWORD_CHANGED_DATE] AS [PASSWORD_CHANGED_DATE], 
+    [USER_SECURITY].[CREATE_DATE] AS [CREATE_DATE], 
+    [USER_SECURITY].[UPDATE_DATE] AS [UPDATE_DATE], 
+    [USER_SECURITY].[ADMIN_FLAG] AS [ADMIN_FLAG], 
+    [USER_SECURITY].[PREV_TO_LAST_LOGIN_DATE] AS [PREV_TO_LAST_LOGIN_DATE]
+    FROM [MP3].[USER_SECURITY] AS [USER_SECURITY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="USER_SELECTION" EntityType="Self.USER_SELECTION" store:Type="Tables" store:Schema="MP3">
+            <DefiningQuery>SELECT 
+    [USER_SELECTION].[USER_SECURITY_ID] AS [USER_SECURITY_ID], 
+    [USER_SELECTION].[SONG_ID] AS [SONG_ID], 
+    [USER_SELECTION].[CREATE_DATE] AS [CREATE_DATE], 
+    [USER_SELECTION].[UPDATE_DATE] AS [UPDATE_DATE]
+    FROM [MP3].[USER_SELECTION] AS [USER_SELECTION]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MediaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ALBUM">
+          <Key>
+            <PropertyRef Name="ALBUM_ID" />
+            <PropertyRef Name="ARTIST_ID" />
+            <PropertyRef Name="ALBUM_NAME" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ALBUM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ALBUM_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ARTIST">
+          <Key>
+            <PropertyRef Name="ARTIST_ID" />
+            <PropertyRef Name="ARTIST_NAME" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ARTIST_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="EXTERNAL_IP_ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="ADDRESS" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+            <PropertyRef Name="ENTRY" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ENTRY" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="SONG">
+          <Key>
+            <PropertyRef Name="SONG_ID" />
+            <PropertyRef Name="SONG_TITLE" />
+            <PropertyRef Name="ALBUM_ART_FLAG" />
+            <PropertyRef Name="LYRICS_FLAG" />
+            <PropertyRef Name="ITUNES_FLAG" />
+            <PropertyRef Name="ID3V1_FLAG" />
+            <PropertyRef Name="ID3V2_FLAG" />
+            <PropertyRef Name="UPDATE_TAGS_FLAG" />
+            <PropertyRef Name="CREATE_DATE" />
+            <PropertyRef Name="RECOMMEND_FLAG" />
+            <PropertyRef Name="UPDATE_FILE_FLAG" />
+            <PropertyRef Name="FAVORITES_FLAG" />
+            <PropertyRef Name="PLAY_COUNT" />
+            <PropertyRef Name="DOWNLOAD_COUNT" />
+          </Key>
+          <Property Name="SONG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ARTIST_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="ALBUM_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SONG_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ALBUM_ART" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LYRICS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YEAR" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="GENRE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TRACK_NUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DISC_NUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ALBUM_ART_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LYRICS_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ITUNES_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V1_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V1_ARTIST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID3V1_ALBUM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID3V1_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID3V2_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ID3V2_ARTIST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID3V2_ALBUM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ID3V2_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATE_TAGS_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="NEW_ALBUM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NEW_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NEW_TRACK_NUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="NEW_GENRE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FILENAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ABS_FILE_PATH" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="REL_FILE_PATH" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="RECOMMEND_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="UPDATE_FILE_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="OLD_ART" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FAVORITES_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="VIDEO_PATH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FILE_SIZE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DURATION" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SAMPLE_RATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BITRATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BACK_COVER" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ARTIST_IMAGE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BAND" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PLAY_COUNT" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="DOWNLOAD_COUNT" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="NEW_ARTIST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMMENTS" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="COMPOSER" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CONDUCTOR" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USER_SECURITY">
+          <Key>
+            <PropertyRef Name="USER_SECURITY_ID" />
+            <PropertyRef Name="USERNAME" />
+            <PropertyRef Name="PASSWORD" />
+            <PropertyRef Name="LOCKED_FLAG" />
+            <PropertyRef Name="ACTIVE_FLAG" />
+            <PropertyRef Name="LOGIN_COUNT" />
+            <PropertyRef Name="LIFETIME_FAILURE_COUNT" />
+            <PropertyRef Name="LOGIN_FAILURE_COUNT" />
+            <PropertyRef Name="PASSWORD_CHANGED_COUNT" />
+            <PropertyRef Name="CREATE_DATE" />
+            <PropertyRef Name="ADMIN_FLAG" />
+          </Key>
+          <Property Name="USER_SECURITY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="Binary" MaxLength="2000" FixedLength="false" Nullable="false" />
+          <Property Name="LOCKED_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="LOGIN_COUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_LOGIN_DATE" Type="DateTime" Precision="0" />
+          <Property Name="LIFETIME_FAILURE_COUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LOGIN_FAILURE_COUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_FAILURE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="PASSWORD_CHANGED_COUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PASSWORD_CHANGED_DATE" Type="DateTime" Precision="0" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+          <Property Name="ADMIN_FLAG" Type="Decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="PREV_TO_LAST_LOGIN_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="USER_SELECTION">
+          <Key>
+            <PropertyRef Name="USER_SECURITY_ID" />
+            <PropertyRef Name="SONG_ID" />
+            <PropertyRef Name="CREATE_DATE" />
+          </Key>
+          <Property Name="USER_SECURITY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="SONG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="MediaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ALBUMs" EntityType="Self.ALBUM" />
+          <EntitySet Name="ARTISTs" EntityType="Self.ARTIST" />
+          <EntitySet Name="EXTERNAL_IP_ADDRESS" EntityType="Self.EXTERNAL_IP_ADDRESS" />
+          <EntitySet Name="LOGs" EntityType="Self.LOG" />
+          <EntitySet Name="SONGs" EntityType="Self.SONG" />
+          <EntitySet Name="USER_SECURITY" EntityType="Self.USER_SECURITY" />
+          <EntitySet Name="USER_SELECTION" EntityType="Self.USER_SELECTION" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MediaModelStoreContainer" CdmEntityContainer="MediaEntities">
+          <EntitySetMapping Name="ALBUMs">
+            <EntityTypeMapping TypeName="MediaModel.ALBUM">
+              <MappingFragment StoreEntitySet="ALBUM">
+                <ScalarProperty Name="ALBUM_ID" ColumnName="ALBUM_ID" />
+                <ScalarProperty Name="ARTIST_ID" ColumnName="ARTIST_ID" />
+                <ScalarProperty Name="ALBUM_NAME" ColumnName="ALBUM_NAME" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARTISTs">
+            <EntityTypeMapping TypeName="MediaModel.ARTIST">
+              <MappingFragment StoreEntitySet="ARTIST">
+                <ScalarProperty Name="ARTIST_ID" ColumnName="ARTIST_ID" />
+                <ScalarProperty Name="ARTIST_NAME" ColumnName="ARTIST_NAME" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXTERNAL_IP_ADDRESS">
+            <EntityTypeMapping TypeName="MediaModel.EXTERNAL_IP_ADDRESS">
+              <MappingFragment StoreEntitySet="EXTERNAL_IP_ADDRESS">
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGs">
+            <EntityTypeMapping TypeName="MediaModel.LOG">
+              <MappingFragment StoreEntitySet="LOG">
+                <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+                <ScalarProperty Name="ENTRY" ColumnName="ENTRY" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SONGs">
+            <EntityTypeMapping TypeName="MediaModel.SONG">
+              <MappingFragment StoreEntitySet="SONG">
+                <ScalarProperty Name="SONG_ID" ColumnName="SONG_ID" />
+                <ScalarProperty Name="ARTIST_ID" ColumnName="ARTIST_ID" />
+                <ScalarProperty Name="ALBUM_ID" ColumnName="ALBUM_ID" />
+                <ScalarProperty Name="SONG_TITLE" ColumnName="SONG_TITLE" />
+                <ScalarProperty Name="ALBUM_ART" ColumnName="ALBUM_ART" />
+                <ScalarProperty Name="LYRICS" ColumnName="LYRICS" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
+                <ScalarProperty Name="GENRE" ColumnName="GENRE" />
+                <ScalarProperty Name="TRACK_NUM" ColumnName="TRACK_NUM" />
+                <ScalarProperty Name="DISC_NUM" ColumnName="DISC_NUM" />
+                <ScalarProperty Name="ALBUM_ART_FLAG" ColumnName="ALBUM_ART_FLAG" />
+                <ScalarProperty Name="LYRICS_FLAG" ColumnName="LYRICS_FLAG" />
+                <ScalarProperty Name="ITUNES_FLAG" ColumnName="ITUNES_FLAG" />
+                <ScalarProperty Name="ID3V1_FLAG" ColumnName="ID3V1_FLAG" />
+                <ScalarProperty Name="ID3V1_ARTIST" ColumnName="ID3V1_ARTIST" />
+                <ScalarProperty Name="ID3V1_ALBUM" ColumnName="ID3V1_ALBUM" />
+                <ScalarProperty Name="ID3V1_TITLE" ColumnName="ID3V1_TITLE" />
+                <ScalarProperty Name="ID3V2_FLAG" ColumnName="ID3V2_FLAG" />
+                <ScalarProperty Name="ID3V2_ARTIST" ColumnName="ID3V2_ARTIST" />
+                <ScalarProperty Name="ID3V2_ALBUM" ColumnName="ID3V2_ALBUM" />
+                <ScalarProperty Name="ID3V2_TITLE" ColumnName="ID3V2_TITLE" />
+                <ScalarProperty Name="UPDATE_TAGS_FLAG" ColumnName="UPDATE_TAGS_FLAG" />
+                <ScalarProperty Name="NEW_ALBUM" ColumnName="NEW_ALBUM" />
+                <ScalarProperty Name="NEW_TITLE" ColumnName="NEW_TITLE" />
+                <ScalarProperty Name="NEW_TRACK_NUM" ColumnName="NEW_TRACK_NUM" />
+                <ScalarProperty Name="NEW_GENRE" ColumnName="NEW_GENRE" />
+                <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+                <ScalarProperty Name="ABS_FILE_PATH" ColumnName="ABS_FILE_PATH" />
+                <ScalarProperty Name="REL_FILE_PATH" ColumnName="REL_FILE_PATH" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="RECOMMEND_FLAG" ColumnName="RECOMMEND_FLAG" />
+                <ScalarProperty Name="UPDATE_FILE_FLAG" ColumnName="UPDATE_FILE_FLAG" />
+                <ScalarProperty Name="OLD_ART" ColumnName="OLD_ART" />
+                <ScalarProperty Name="FAVORITES_FLAG" ColumnName="FAVORITES_FLAG" />
+                <ScalarProperty Name="VIDEO_PATH" ColumnName="VIDEO_PATH" />
+                <ScalarProperty Name="FILE_SIZE" ColumnName="FILE_SIZE" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="SAMPLE_RATE" ColumnName="SAMPLE_RATE" />
+                <ScalarProperty Name="BITRATE" ColumnName="BITRATE" />
+                <ScalarProperty Name="BACK_COVER" ColumnName="BACK_COVER" />
+                <ScalarProperty Name="ARTIST_IMAGE" ColumnName="ARTIST_IMAGE" />
+                <ScalarProperty Name="BAND" ColumnName="BAND" />
+                <ScalarProperty Name="PLAY_COUNT" ColumnName="PLAY_COUNT" />
+                <ScalarProperty Name="DOWNLOAD_COUNT" ColumnName="DOWNLOAD_COUNT" />
+                <ScalarProperty Name="NEW_ARTIST" ColumnName="NEW_ARTIST" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+                <ScalarProperty Name="COMPOSER" ColumnName="COMPOSER" />
+                <ScalarProperty Name="CONDUCTOR" ColumnName="CONDUCTOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_SECURITY">
+            <EntityTypeMapping TypeName="MediaModel.USER_SECURITY">
+              <MappingFragment StoreEntitySet="USER_SECURITY">
+                <ScalarProperty Name="USER_SECURITY_ID" ColumnName="USER_SECURITY_ID" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="LOCKED_FLAG" ColumnName="LOCKED_FLAG" />
+                <ScalarProperty Name="ACTIVE_FLAG" ColumnName="ACTIVE_FLAG" />
+                <ScalarProperty Name="LOGIN_COUNT" ColumnName="LOGIN_COUNT" />
+                <ScalarProperty Name="LAST_LOGIN_DATE" ColumnName="LAST_LOGIN_DATE" />
+                <ScalarProperty Name="LIFETIME_FAILURE_COUNT" ColumnName="LIFETIME_FAILURE_COUNT" />
+                <ScalarProperty Name="LOGIN_FAILURE_COUNT" ColumnName="LOGIN_FAILURE_COUNT" />
+                <ScalarProperty Name="LAST_FAILURE_DATE" ColumnName="LAST_FAILURE_DATE" />
+                <ScalarProperty Name="PASSWORD_CHANGED_COUNT" ColumnName="PASSWORD_CHANGED_COUNT" />
+                <ScalarProperty Name="PASSWORD_CHANGED_DATE" ColumnName="PASSWORD_CHANGED_DATE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="ADMIN_FLAG" ColumnName="ADMIN_FLAG" />
+                <ScalarProperty Name="PREV_TO_LAST_LOGIN_DATE" ColumnName="PREV_TO_LAST_LOGIN_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_SELECTION">
+            <EntityTypeMapping TypeName="MediaModel.USER_SELECTION">
+              <MappingFragment StoreEntitySet="USER_SELECTION">
+                <ScalarProperty Name="USER_SECURITY_ID" ColumnName="USER_SECURITY_ID" />
+                <ScalarProperty Name="SONG_ID" ColumnName="SONG_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

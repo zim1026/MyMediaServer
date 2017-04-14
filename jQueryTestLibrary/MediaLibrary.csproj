@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{861076A4-24C2-4E14-BE2E-B6DCFF7FBD10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MediaLibrary</RootNamespace>
+    <AssemblyName>MediaLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ItstDevelopmentKit">
+      <HintPath>..\Web\bin\ItstDevelopmentKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ALBUM.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Album.Partial.cs" />
+    <Compile Include="AlbumManager.cs" />
+    <Compile Include="ARTIST.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Artist.Partial.cs" />
+    <Compile Include="ArtistManager.cs" />
+    <Compile Include="LOG.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Media.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Media.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Media.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Media.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Media.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchCriteria.cs" />
+    <Compile Include="SearchSummary.cs" />
+    <Compile Include="SONG.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Song.Partial.cs" />
+    <Compile Include="SongListManager.cs" />
+    <Compile Include="SongManager.cs" />
+    <Compile Include="UserPlaylistManager.cs" />
+    <Compile Include="UserSecurityManager.cs" />
+    <Compile Include="USER_PLAYLIST.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Playlist.partial.cs" />
+    <Compile Include="USER_SECURITY.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Security.Partial.cs" />
+    <Compile Include="USER_SELECTION.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_SONG_LIST.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_Song_List.Partial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Media.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Media.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Media.edmx.diagram">
+      <DependentUpon>Media.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Media.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Media.edmx</DependentUpon>
+      <LastGenOutput>Media.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Media.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Media.edmx</DependentUpon>
+      <LastGenOutput>Media.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

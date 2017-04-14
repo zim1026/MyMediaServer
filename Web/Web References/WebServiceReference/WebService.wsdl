@@ -1,0 +1,2406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetEmptyArtist">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEmptyArtistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmptyArtistResult" type="tns:ARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ARTIST">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ARTIST_ID" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ARTIST_NAME" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CREATE_DATE" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_DATE" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateArtist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="artistID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="artistName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateArtistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateArtistResult" type="tns:ARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveArtist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="artist" type="tns:ARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveArtistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveArtistResult" type="tns:ARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArtist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="artistId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArtistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArtistResult" type="tns:ARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArtists">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetArtistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArtistsResult" type="tns:ArrayOfARTIST" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfARTIST">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ARTIST" nillable="true" type="tns:ARTIST" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmptyAlbum">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEmptyAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmptyAlbumResult" type="tns:ALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ALBUM">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ALBUM_ID" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ARTIST_ID" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALBUM_NAME" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CREATE_DATE" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_DATE" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateAlbum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="albumID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="albumName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateAlbumResult" type="tns:ALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAlbum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="a" type="tns:ALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveAlbumResult" type="tns:ALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlbum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="albumId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlbumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlbumResult" type="tns:ALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlbums">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="artistId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlbumsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlbumsResult" type="tns:ArrayOfALBUM" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfALBUM">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ALBUM" nillable="true" type="tns:ALBUM" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmptySong">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEmptySongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmptySongResult" type="tns:SONG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SONG">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SONG_ID" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ARTIST_ID" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ALBUM_ID" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="SONG_TITLE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ALBUM_ART" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="LYRICS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YEAR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GENRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRACK_NUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DISC_NUM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ALBUM_ART_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LYRICS_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ITUNES_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID3V1_FLAG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V1_ARTIST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V1_ALBUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V1_TITLE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID3V2_FLAG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V2_ARTIST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V2_ALBUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID3V2_TITLE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_TAGS_FLAG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEW_ALBUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEW_TITLE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NEW_TRACK_NUM" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEW_GENRE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FILENAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ABS_FILE_PATH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REL_FILE_PATH" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CREATE_DATE" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_DATE" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RECOMMEND_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_FILE_FLAG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="OLD_ART" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="FAVORITES_FLAG" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="VIDEO_PATH" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FILE_SIZE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="DURATION" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SAMPLE_RATE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BITRATE" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="BACK_COVER" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ARTIST_IMAGE" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="BAND" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="PLAY_COUNT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOWNLOAD_COUNT" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="NEW_ARTIST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMMENTS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMPOSER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONDUCTOR" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveSong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="s" type="tns:SONG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveSongResult" type="tns:SONG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="songId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSongResult" type="tns:SONG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSongs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="albumId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSongsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSongsResult" type="tns:ArrayOfSONG" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSONG">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SONG" nillable="true" type="tns:SONG" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSongList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="artistSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="albumSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="songSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="genreSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateAddedSearch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSongListResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewestSongDate">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewestSongDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewestSongDateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="artistSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="albumSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="songSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="genreSearch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateAddedSearch" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSearchResultsSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSearchResultsSummaryResult" type="tns:SearchSummary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SearchSummary">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArtistCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AlbumCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SongCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="GenreCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UploadFile">
+        <s:complexType />
+      </s:element>
+      <s:element name="UploadFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ProcessFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProcessFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFileTag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tag" type="tns:ID3Tag" />
+            <s:element minOccurs="0" maxOccurs="1" name="songID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="albumArtFilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ID3Tag">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id3v1Artists" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="id3v1Artist" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlbumArtists" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlbumArtist" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Artists" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Artist" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Album" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="id3v1Album" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="id3v1Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genres" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Genre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:unsignedInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="YearString" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrackNum" type="s:unsignedInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrackNumString" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DiscNum" type="s:unsignedInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiscNumString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lyrics" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conductor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Duration" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bitrate" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SampleRate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlbumArt" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="BackCoverImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArtistImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="BandImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Composers" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Composer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Performers" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Performer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Copyright" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateFileTagResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetID3TagInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetID3TagInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetID3TagInfoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmptyID3Tag">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEmptyID3TagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmptyID3TagResult" type="tns:ID3Tag" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPlaylistedSong">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="songID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPlaylistedSongResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsPlaylistedSongResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ManageUserPlaylist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="songID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="add" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ManageUserPlaylistResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserPlaylist">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserPlaylistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserPlaylistResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUsersResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AuthorizedUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthorizedUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthorizedUserResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USER_SECURITY">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="USER_SECURITY_ID" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="USERNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PASSWORD" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LOCKED_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ACTIVE_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LAST_LOGIN_DATE" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LOGIN_FAILURE_COUNT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LAST_FAILURE_DATE" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CREATE_DATE" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UPDATE_DATE" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ADMIN_FLAG" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PREV_TO_LAST_LOGIN_DATE" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByNameResult" type="tns:USER_SECURITY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userSecurityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByIDResult" type="tns:USER_SECURITY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmptyUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetEmptyUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmptyUserResult" type="tns:USER_SECURITY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:USER_SECURITY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUserResult" type="tns:USER_SECURITY" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ARTIST" nillable="true" type="tns:ARTIST" />
+      <s:element name="ArrayOfARTIST" nillable="true" type="tns:ArrayOfARTIST" />
+      <s:element name="ALBUM" nillable="true" type="tns:ALBUM" />
+      <s:element name="ArrayOfALBUM" nillable="true" type="tns:ArrayOfALBUM" />
+      <s:element name="SONG" nillable="true" type="tns:SONG" />
+      <s:element name="ArrayOfSONG" nillable="true" type="tns:ArrayOfSONG" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="SearchSummary" nillable="true" type="tns:SearchSummary" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="anyType" nillable="true" />
+      <s:element name="ID3Tag" nillable="true" type="tns:ID3Tag" />
+      <s:element name="USER_SECURITY" nillable="true" type="tns:USER_SECURITY" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetEmptyArtistSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmptyArtist" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyArtistSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmptyArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateArtist" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveArtistSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveArtist" />
+  </wsdl:message>
+  <wsdl:message name="SaveArtistSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArtist" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArtistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArtists" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArtistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmptyAlbum" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmptyAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAlbum" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAlbum" />
+  </wsdl:message>
+  <wsdl:message name="SaveAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlbum" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlbumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlbums" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlbumsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptySongSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmptySong" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptySongSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmptySongResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSongSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveSong" />
+  </wsdl:message>
+  <wsdl:message name="SaveSongSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveSongResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSongSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSong" />
+  </wsdl:message>
+  <wsdl:message name="GetSongSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSongResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSongs" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSongsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSongList" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSongListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewestSongDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewestSongDate" />
+  </wsdl:message>
+  <wsdl:message name="GetNewestSongDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewestSongDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsSummary" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSearchResultsSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessFile" />
+  </wsdl:message>
+  <wsdl:message name="ProcessFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileTagSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFileTag" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileTagSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFileTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetID3TagInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetID3TagInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyID3TagSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmptyID3Tag" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyID3TagSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmptyID3TagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongSoapIn">
+    <wsdl:part name="parameters" element="tns:IsPlaylistedSong" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongSoapOut">
+    <wsdl:part name="parameters" element="tns:IsPlaylistedSongResponse" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:ManageUserPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:ManageUserPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPlaylistSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserPlaylist" />
+  </wsdl:message>
+  <wsdl:message name="GetUserPlaylistSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserPlaylistResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizedUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthorizedUser" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizedUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthorizedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByName" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByID" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmptyUser" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmptyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyArtistHttpGetIn" />
+  <wsdl:message name="GetEmptyArtistHttpGetOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistHttpGetIn">
+    <wsdl:part name="artistID" type="s:string" />
+    <wsdl:part name="artistName" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistHttpGetOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistHttpGetIn">
+    <wsdl:part name="artistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistHttpGetOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistsHttpGetIn" />
+  <wsdl:message name="GetArtistsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyAlbumHttpGetIn" />
+  <wsdl:message name="GetEmptyAlbumHttpGetOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumHttpGetIn">
+    <wsdl:part name="albumID" type="s:string" />
+    <wsdl:part name="albumName" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumHttpGetOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumHttpGetIn">
+    <wsdl:part name="albumId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumHttpGetOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsHttpGetIn">
+    <wsdl:part name="artistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptySongHttpGetIn" />
+  <wsdl:message name="GetEmptySongHttpGetOut">
+    <wsdl:part name="Body" element="tns:SONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongHttpGetIn">
+    <wsdl:part name="songId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongHttpGetOut">
+    <wsdl:part name="Body" element="tns:SONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsHttpGetIn">
+    <wsdl:part name="albumId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListHttpGetIn">
+    <wsdl:part name="artistSearch" type="s:string" />
+    <wsdl:part name="albumSearch" type="s:string" />
+    <wsdl:part name="songSearch" type="s:string" />
+    <wsdl:part name="genreSearch" type="s:string" />
+    <wsdl:part name="dateAddedSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListHttpGetOut" />
+  <wsdl:message name="GetNewestSongDateHttpGetIn" />
+  <wsdl:message name="GetNewestSongDateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummaryHttpGetIn">
+    <wsdl:part name="artistSearch" type="s:string" />
+    <wsdl:part name="albumSearch" type="s:string" />
+    <wsdl:part name="songSearch" type="s:string" />
+    <wsdl:part name="genreSearch" type="s:string" />
+    <wsdl:part name="dateAddedSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummaryHttpGetOut">
+    <wsdl:part name="Body" element="tns:SearchSummary" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpGetIn" />
+  <wsdl:message name="UploadFileHttpGetOut" />
+  <wsdl:message name="ProcessFileHttpGetIn">
+    <wsdl:part name="file" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProcessFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoHttpGetIn">
+    <wsdl:part name="file" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyID3TagHttpGetIn" />
+  <wsdl:message name="GetEmptyID3TagHttpGetOut">
+    <wsdl:part name="Body" element="tns:ID3Tag" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongHttpGetIn">
+    <wsdl:part name="songID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistHttpGetIn">
+    <wsdl:part name="songID" type="s:string" />
+    <wsdl:part name="add" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistHttpGetOut" />
+  <wsdl:message name="GetUserPlaylistHttpGetIn" />
+  <wsdl:message name="GetUserPlaylistHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersHttpGetIn" />
+  <wsdl:message name="GetUsersHttpGetOut" />
+  <wsdl:message name="AuthorizedUserHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizedUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDHttpGetIn">
+    <wsdl:part name="userSecurityID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyUserHttpGetIn" />
+  <wsdl:message name="GetEmptyUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyArtistHttpPostIn" />
+  <wsdl:message name="GetEmptyArtistHttpPostOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistHttpPostIn">
+    <wsdl:part name="artistID" type="s:string" />
+    <wsdl:part name="artistName" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateArtistHttpPostOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistHttpPostIn">
+    <wsdl:part name="artistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistHttpPostOut">
+    <wsdl:part name="Body" element="tns:ARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetArtistsHttpPostIn" />
+  <wsdl:message name="GetArtistsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfARTIST" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyAlbumHttpPostIn" />
+  <wsdl:message name="GetEmptyAlbumHttpPostOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumHttpPostIn">
+    <wsdl:part name="albumID" type="s:string" />
+    <wsdl:part name="albumName" type="s:string" />
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAlbumHttpPostOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumHttpPostIn">
+    <wsdl:part name="albumId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumHttpPostOut">
+    <wsdl:part name="Body" element="tns:ALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsHttpPostIn">
+    <wsdl:part name="artistId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAlbumsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfALBUM" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptySongHttpPostIn" />
+  <wsdl:message name="GetEmptySongHttpPostOut">
+    <wsdl:part name="Body" element="tns:SONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongHttpPostIn">
+    <wsdl:part name="songId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongHttpPostOut">
+    <wsdl:part name="Body" element="tns:SONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsHttpPostIn">
+    <wsdl:part name="albumId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSONG" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListHttpPostIn">
+    <wsdl:part name="artistSearch" type="s:string" />
+    <wsdl:part name="albumSearch" type="s:string" />
+    <wsdl:part name="songSearch" type="s:string" />
+    <wsdl:part name="genreSearch" type="s:string" />
+    <wsdl:part name="dateAddedSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSongListHttpPostOut" />
+  <wsdl:message name="GetNewestSongDateHttpPostIn" />
+  <wsdl:message name="GetNewestSongDateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummaryHttpPostIn">
+    <wsdl:part name="artistSearch" type="s:string" />
+    <wsdl:part name="albumSearch" type="s:string" />
+    <wsdl:part name="songSearch" type="s:string" />
+    <wsdl:part name="genreSearch" type="s:string" />
+    <wsdl:part name="dateAddedSearch" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetSearchResultsSummaryHttpPostOut">
+    <wsdl:part name="Body" element="tns:SearchSummary" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileHttpPostIn" />
+  <wsdl:message name="UploadFileHttpPostOut" />
+  <wsdl:message name="ProcessFileHttpPostIn">
+    <wsdl:part name="file" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProcessFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoHttpPostIn">
+    <wsdl:part name="file" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetID3TagInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyID3TagHttpPostIn" />
+  <wsdl:message name="GetEmptyID3TagHttpPostOut">
+    <wsdl:part name="Body" element="tns:ID3Tag" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongHttpPostIn">
+    <wsdl:part name="songID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsPlaylistedSongHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistHttpPostIn">
+    <wsdl:part name="songID" type="s:string" />
+    <wsdl:part name="add" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ManageUserPlaylistHttpPostOut" />
+  <wsdl:message name="GetUserPlaylistHttpPostIn" />
+  <wsdl:message name="GetUserPlaylistHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersHttpPostIn" />
+  <wsdl:message name="GetUsersHttpPostOut" />
+  <wsdl:message name="AuthorizedUserHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizedUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDHttpPostIn">
+    <wsdl:part name="userSecurityID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:message name="GetEmptyUserHttpPostIn" />
+  <wsdl:message name="GetEmptyUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:USER_SECURITY" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="GetEmptyArtist">
+      <wsdl:input message="tns:GetEmptyArtistSoapIn" />
+      <wsdl:output message="tns:GetEmptyArtistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <wsdl:input message="tns:UpdateArtistSoapIn" />
+      <wsdl:output message="tns:UpdateArtistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveArtist">
+      <wsdl:input message="tns:SaveArtistSoapIn" />
+      <wsdl:output message="tns:SaveArtistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <wsdl:input message="tns:GetArtistSoapIn" />
+      <wsdl:output message="tns:GetArtistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <wsdl:input message="tns:GetArtistsSoapIn" />
+      <wsdl:output message="tns:GetArtistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <wsdl:input message="tns:GetEmptyAlbumSoapIn" />
+      <wsdl:output message="tns:GetEmptyAlbumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <wsdl:input message="tns:UpdateAlbumSoapIn" />
+      <wsdl:output message="tns:UpdateAlbumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlbum">
+      <wsdl:input message="tns:SaveAlbumSoapIn" />
+      <wsdl:output message="tns:SaveAlbumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <wsdl:input message="tns:GetAlbumSoapIn" />
+      <wsdl:output message="tns:GetAlbumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <wsdl:input message="tns:GetAlbumsSoapIn" />
+      <wsdl:output message="tns:GetAlbumsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <wsdl:input message="tns:GetEmptySongSoapIn" />
+      <wsdl:output message="tns:GetEmptySongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSong">
+      <wsdl:input message="tns:SaveSongSoapIn" />
+      <wsdl:output message="tns:SaveSongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <wsdl:input message="tns:GetSongSoapIn" />
+      <wsdl:output message="tns:GetSongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <wsdl:input message="tns:GetSongsSoapIn" />
+      <wsdl:output message="tns:GetSongsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <wsdl:input message="tns:GetSongListSoapIn" />
+      <wsdl:output message="tns:GetSongListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <wsdl:input message="tns:GetNewestSongDateSoapIn" />
+      <wsdl:output message="tns:GetNewestSongDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <wsdl:input message="tns:GetSearchResultsSummarySoapIn" />
+      <wsdl:output message="tns:GetSearchResultsSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileSoapIn" />
+      <wsdl:output message="tns:UploadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <wsdl:input message="tns:ProcessFileSoapIn" />
+      <wsdl:output message="tns:ProcessFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileTag">
+      <wsdl:input message="tns:UpdateFileTagSoapIn" />
+      <wsdl:output message="tns:UpdateFileTagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <wsdl:input message="tns:GetID3TagInfoSoapIn" />
+      <wsdl:output message="tns:GetID3TagInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <wsdl:input message="tns:GetEmptyID3TagSoapIn" />
+      <wsdl:output message="tns:GetEmptyID3TagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <wsdl:input message="tns:IsPlaylistedSongSoapIn" />
+      <wsdl:output message="tns:IsPlaylistedSongSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <wsdl:input message="tns:ManageUserPlaylistSoapIn" />
+      <wsdl:output message="tns:ManageUserPlaylistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <wsdl:input message="tns:GetUserPlaylistSoapIn" />
+      <wsdl:output message="tns:GetUserPlaylistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <wsdl:input message="tns:AuthorizedUserSoapIn" />
+      <wsdl:output message="tns:AuthorizedUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <wsdl:input message="tns:GetUserByNameSoapIn" />
+      <wsdl:output message="tns:GetUserByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input message="tns:GetUserByIDSoapIn" />
+      <wsdl:output message="tns:GetUserByIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <wsdl:input message="tns:GetEmptyUserSoapIn" />
+      <wsdl:output message="tns:GetEmptyUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input message="tns:SaveUserSoapIn" />
+      <wsdl:output message="tns:SaveUserSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpGet">
+    <wsdl:operation name="GetEmptyArtist">
+      <wsdl:input message="tns:GetEmptyArtistHttpGetIn" />
+      <wsdl:output message="tns:GetEmptyArtistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <wsdl:input message="tns:UpdateArtistHttpGetIn" />
+      <wsdl:output message="tns:UpdateArtistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <wsdl:input message="tns:GetArtistHttpGetIn" />
+      <wsdl:output message="tns:GetArtistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <wsdl:input message="tns:GetArtistsHttpGetIn" />
+      <wsdl:output message="tns:GetArtistsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <wsdl:input message="tns:GetEmptyAlbumHttpGetIn" />
+      <wsdl:output message="tns:GetEmptyAlbumHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <wsdl:input message="tns:UpdateAlbumHttpGetIn" />
+      <wsdl:output message="tns:UpdateAlbumHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <wsdl:input message="tns:GetAlbumHttpGetIn" />
+      <wsdl:output message="tns:GetAlbumHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <wsdl:input message="tns:GetAlbumsHttpGetIn" />
+      <wsdl:output message="tns:GetAlbumsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <wsdl:input message="tns:GetEmptySongHttpGetIn" />
+      <wsdl:output message="tns:GetEmptySongHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <wsdl:input message="tns:GetSongHttpGetIn" />
+      <wsdl:output message="tns:GetSongHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <wsdl:input message="tns:GetSongsHttpGetIn" />
+      <wsdl:output message="tns:GetSongsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <wsdl:input message="tns:GetSongListHttpGetIn" />
+      <wsdl:output message="tns:GetSongListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <wsdl:input message="tns:GetNewestSongDateHttpGetIn" />
+      <wsdl:output message="tns:GetNewestSongDateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <wsdl:input message="tns:GetSearchResultsSummaryHttpGetIn" />
+      <wsdl:output message="tns:GetSearchResultsSummaryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpGetIn" />
+      <wsdl:output message="tns:UploadFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <wsdl:input message="tns:ProcessFileHttpGetIn" />
+      <wsdl:output message="tns:ProcessFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <wsdl:input message="tns:GetID3TagInfoHttpGetIn" />
+      <wsdl:output message="tns:GetID3TagInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <wsdl:input message="tns:GetEmptyID3TagHttpGetIn" />
+      <wsdl:output message="tns:GetEmptyID3TagHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <wsdl:input message="tns:IsPlaylistedSongHttpGetIn" />
+      <wsdl:output message="tns:IsPlaylistedSongHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <wsdl:input message="tns:ManageUserPlaylistHttpGetIn" />
+      <wsdl:output message="tns:ManageUserPlaylistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <wsdl:input message="tns:GetUserPlaylistHttpGetIn" />
+      <wsdl:output message="tns:GetUserPlaylistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersHttpGetIn" />
+      <wsdl:output message="tns:GetUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <wsdl:input message="tns:AuthorizedUserHttpGetIn" />
+      <wsdl:output message="tns:AuthorizedUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <wsdl:input message="tns:GetUserByNameHttpGetIn" />
+      <wsdl:output message="tns:GetUserByNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input message="tns:GetUserByIDHttpGetIn" />
+      <wsdl:output message="tns:GetUserByIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <wsdl:input message="tns:GetEmptyUserHttpGetIn" />
+      <wsdl:output message="tns:GetEmptyUserHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceHttpPost">
+    <wsdl:operation name="GetEmptyArtist">
+      <wsdl:input message="tns:GetEmptyArtistHttpPostIn" />
+      <wsdl:output message="tns:GetEmptyArtistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <wsdl:input message="tns:UpdateArtistHttpPostIn" />
+      <wsdl:output message="tns:UpdateArtistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <wsdl:input message="tns:GetArtistHttpPostIn" />
+      <wsdl:output message="tns:GetArtistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <wsdl:input message="tns:GetArtistsHttpPostIn" />
+      <wsdl:output message="tns:GetArtistsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <wsdl:input message="tns:GetEmptyAlbumHttpPostIn" />
+      <wsdl:output message="tns:GetEmptyAlbumHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <wsdl:input message="tns:UpdateAlbumHttpPostIn" />
+      <wsdl:output message="tns:UpdateAlbumHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <wsdl:input message="tns:GetAlbumHttpPostIn" />
+      <wsdl:output message="tns:GetAlbumHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <wsdl:input message="tns:GetAlbumsHttpPostIn" />
+      <wsdl:output message="tns:GetAlbumsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <wsdl:input message="tns:GetEmptySongHttpPostIn" />
+      <wsdl:output message="tns:GetEmptySongHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <wsdl:input message="tns:GetSongHttpPostIn" />
+      <wsdl:output message="tns:GetSongHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <wsdl:input message="tns:GetSongsHttpPostIn" />
+      <wsdl:output message="tns:GetSongsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <wsdl:input message="tns:GetSongListHttpPostIn" />
+      <wsdl:output message="tns:GetSongListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <wsdl:input message="tns:GetNewestSongDateHttpPostIn" />
+      <wsdl:output message="tns:GetNewestSongDateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <wsdl:input message="tns:GetSearchResultsSummaryHttpPostIn" />
+      <wsdl:output message="tns:GetSearchResultsSummaryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input message="tns:UploadFileHttpPostIn" />
+      <wsdl:output message="tns:UploadFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <wsdl:input message="tns:ProcessFileHttpPostIn" />
+      <wsdl:output message="tns:ProcessFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <wsdl:input message="tns:GetID3TagInfoHttpPostIn" />
+      <wsdl:output message="tns:GetID3TagInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <wsdl:input message="tns:GetEmptyID3TagHttpPostIn" />
+      <wsdl:output message="tns:GetEmptyID3TagHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <wsdl:input message="tns:IsPlaylistedSongHttpPostIn" />
+      <wsdl:output message="tns:IsPlaylistedSongHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <wsdl:input message="tns:ManageUserPlaylistHttpPostIn" />
+      <wsdl:output message="tns:ManageUserPlaylistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <wsdl:input message="tns:GetUserPlaylistHttpPostIn" />
+      <wsdl:output message="tns:GetUserPlaylistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersHttpPostIn" />
+      <wsdl:output message="tns:GetUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <wsdl:input message="tns:AuthorizedUserHttpPostIn" />
+      <wsdl:output message="tns:AuthorizedUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <wsdl:input message="tns:GetUserByNameHttpPostIn" />
+      <wsdl:output message="tns:GetUserByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <wsdl:input message="tns:GetUserByIDHttpPostIn" />
+      <wsdl:output message="tns:GetUserByIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <wsdl:input message="tns:GetEmptyUserHttpPostIn" />
+      <wsdl:output message="tns:GetEmptyUserHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEmptyArtist">
+      <soap:operation soapAction="http://tempuri.org/GetEmptyArtist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <soap:operation soapAction="http://tempuri.org/UpdateArtist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveArtist">
+      <soap:operation soapAction="http://tempuri.org/SaveArtist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <soap:operation soapAction="http://tempuri.org/GetArtist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <soap:operation soapAction="http://tempuri.org/GetArtists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <soap:operation soapAction="http://tempuri.org/GetEmptyAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <soap:operation soapAction="http://tempuri.org/UpdateAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlbum">
+      <soap:operation soapAction="http://tempuri.org/SaveAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <soap:operation soapAction="http://tempuri.org/GetAlbum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <soap:operation soapAction="http://tempuri.org/GetAlbums" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <soap:operation soapAction="http://tempuri.org/GetEmptySong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSong">
+      <soap:operation soapAction="http://tempuri.org/SaveSong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <soap:operation soapAction="http://tempuri.org/GetSong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <soap:operation soapAction="http://tempuri.org/GetSongs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <soap:operation soapAction="http://tempuri.org/GetSongList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <soap:operation soapAction="http://tempuri.org/GetNewestSongDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <soap:operation soapAction="http://tempuri.org/GetSearchResultsSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <soap:operation soapAction="http://tempuri.org/ProcessFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileTag">
+      <soap:operation soapAction="http://tempuri.org/UpdateFileTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <soap:operation soapAction="http://tempuri.org/GetID3TagInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <soap:operation soapAction="http://tempuri.org/GetEmptyID3Tag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <soap:operation soapAction="http://tempuri.org/IsPlaylistedSong" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <soap:operation soapAction="http://tempuri.org/ManageUserPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <soap:operation soapAction="http://tempuri.org/GetUserPlaylist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <soap:operation soapAction="http://tempuri.org/AuthorizedUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <soap:operation soapAction="http://tempuri.org/GetUserByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <soap:operation soapAction="http://tempuri.org/GetUserByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <soap:operation soapAction="http://tempuri.org/GetEmptyUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap:operation soapAction="http://tempuri.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetEmptyArtist">
+      <soap12:operation soapAction="http://tempuri.org/GetEmptyArtist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <soap12:operation soapAction="http://tempuri.org/UpdateArtist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveArtist">
+      <soap12:operation soapAction="http://tempuri.org/SaveArtist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <soap12:operation soapAction="http://tempuri.org/GetArtist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <soap12:operation soapAction="http://tempuri.org/GetArtists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <soap12:operation soapAction="http://tempuri.org/GetEmptyAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAlbum">
+      <soap12:operation soapAction="http://tempuri.org/SaveAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <soap12:operation soapAction="http://tempuri.org/GetAlbum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <soap12:operation soapAction="http://tempuri.org/GetAlbums" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <soap12:operation soapAction="http://tempuri.org/GetEmptySong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSong">
+      <soap12:operation soapAction="http://tempuri.org/SaveSong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <soap12:operation soapAction="http://tempuri.org/GetSong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <soap12:operation soapAction="http://tempuri.org/GetSongs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <soap12:operation soapAction="http://tempuri.org/GetSongList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <soap12:operation soapAction="http://tempuri.org/GetNewestSongDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <soap12:operation soapAction="http://tempuri.org/GetSearchResultsSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/UploadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <soap12:operation soapAction="http://tempuri.org/ProcessFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileTag">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFileTag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetID3TagInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <soap12:operation soapAction="http://tempuri.org/GetEmptyID3Tag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <soap12:operation soapAction="http://tempuri.org/IsPlaylistedSong" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/ManageUserPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <soap12:operation soapAction="http://tempuri.org/GetUserPlaylist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://tempuri.org/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <soap12:operation soapAction="http://tempuri.org/AuthorizedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <soap12:operation soapAction="http://tempuri.org/GetUserByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <soap12:operation soapAction="http://tempuri.org/GetUserByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <soap12:operation soapAction="http://tempuri.org/GetEmptyUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap12:operation soapAction="http://tempuri.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpGet" type="tns:WebServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetEmptyArtist">
+      <http:operation location="/GetEmptyArtist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <http:operation location="/UpdateArtist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <http:operation location="/GetArtist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <http:operation location="/GetArtists" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <http:operation location="/GetEmptyAlbum" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <http:operation location="/UpdateAlbum" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <http:operation location="/GetAlbum" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <http:operation location="/GetAlbums" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <http:operation location="/GetEmptySong" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <http:operation location="/GetSong" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <http:operation location="/GetSongs" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <http:operation location="/GetSongList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <http:operation location="/GetNewestSongDate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <http:operation location="/GetSearchResultsSummary" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <http:operation location="/ProcessFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <http:operation location="/GetID3TagInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <http:operation location="/GetEmptyID3Tag" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <http:operation location="/IsPlaylistedSong" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <http:operation location="/ManageUserPlaylist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <http:operation location="/GetUserPlaylist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <http:operation location="/GetUsers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <http:operation location="/AuthorizedUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <http:operation location="/GetUserByName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <http:operation location="/GetUserByID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <http:operation location="/GetEmptyUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceHttpPost" type="tns:WebServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetEmptyArtist">
+      <http:operation location="/GetEmptyArtist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateArtist">
+      <http:operation location="/UpdateArtist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <http:operation location="/GetArtist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtists">
+      <http:operation location="/GetArtists" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyAlbum">
+      <http:operation location="/GetEmptyAlbum" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlbum">
+      <http:operation location="/UpdateAlbum" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbum">
+      <http:operation location="/GetAlbum" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlbums">
+      <http:operation location="/GetAlbums" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptySong">
+      <http:operation location="/GetEmptySong" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSong">
+      <http:operation location="/GetSong" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongs">
+      <http:operation location="/GetSongs" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSongList">
+      <http:operation location="/GetSongList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewestSongDate">
+      <http:operation location="/GetNewestSongDate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSearchResultsSummary">
+      <http:operation location="/GetSearchResultsSummary" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <http:operation location="/UploadFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessFile">
+      <http:operation location="/ProcessFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetID3TagInfo">
+      <http:operation location="/GetID3TagInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyID3Tag">
+      <http:operation location="/GetEmptyID3Tag" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlaylistedSong">
+      <http:operation location="/IsPlaylistedSong" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ManageUserPlaylist">
+      <http:operation location="/ManageUserPlaylist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserPlaylist">
+      <http:operation location="/GetUserPlaylist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsers">
+      <http:operation location="/GetUsers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="AuthorizedUser">
+      <http:operation location="/AuthorizedUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByName">
+      <http:operation location="/GetUserByName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByID">
+      <http:operation location="/GetUserByID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyUser">
+      <http:operation location="/GetEmptyUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:60015/WebServices/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:60015/WebServices/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpGet" binding="tns:WebServiceHttpGet">
+      <http:address location="http://localhost:60015/WebServices/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceHttpPost" binding="tns:WebServiceHttpPost">
+      <http:address location="http://localhost:60015/WebServices/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head runat="server">
+        <title>MP3 Libary</title>
+        <style id="cssStyle" runat="server" type="text/css" media="screen">
+            @import '<%= BaseURL_Prefix %>CSS/StyleSheet.css';
+        </style>
+    </head>
+    <body>
+        <form id="Form1" runat="server">
+            <asp:Panel runat="server" ID="pnlBanner" Visible="false">
+                <div class="content" style="text-align:center; vertical-align:middle">
+                    <asp:LinkButton runat="server" ID="lnkShowHide" Text="Hide Navigation Menu" onclick="lnkShowHide_Click" />
+                    <br />
+                    <h3>
+                        MP3 Libary Management
+                    </h3>
+                    <h2>
+                        <asp:Label runat="server" ID="lblCurrentPage" Text="" />
+                    </h2>
+                </div>
+            </asp:Panel>
+            
+            <%--<asp:ScriptManager runat="server" ID="MasterScriptManager" />--%>
+            <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" CombineScripts="false" />
+            <asp:ContentPlaceHolder runat="server" ID="masterContent" />
+            
+            <asp:Panel runat="server" ID="pnlNavMenu">
+                <div id="navAlpha">
+                    <asp:TreeView runat="server" ID="menuTree" NodeIndent="10" Font-Bold="False" ForeColor="White" ExpandDepth="2"
+                        PopulateNodesFromClient="False">
+
+                        <ParentNodeStyle Font-Bold="False" ForeColor="White" />
+                        <HoverNodeStyle Font-Bold="True" Font-Italic="True" Font-Underline="False" ForeColor="Yellow" />
+                        <SelectedNodeStyle Font-Bold="True" Font-Italic="False" Font-Underline="True" ForeColor="Yellow" />
+                        <NodeStyle Font-Overline="False" Font-Underline="False" ForeColor="White" />
+                        <LeafNodeStyle Font-Bold="False" ForeColor="White" />
+
+                        <Nodes>
+                            <asp:TreeNode NavigateUrl="~/Default.aspx" Text="Home" Value="Home" />
+                            <asp:TreeNode Text="Upload Songs" Value="Upload Songs" NavigateUrl="~/Upload.aspx" />
+                            
+                            <asp:TreeNode SelectAction="Expand" Text="View" Value="View">
+                                <%--<asp:TreeNode NavigateUrl="~/View/Favorites.aspx" Text="Favorites" Value="Favorites" />--%>
+                                <asp:TreeNode Text="Recommendations" Value="Recommendations" NavigateUrl="~/View/Recommendations.aspx" />
+                                <asp:TreeNode Text="New Songs" Value="New Songs" NavigateUrl="~/View/NewSongs.aspx" />
+                                <%--                                
+                                <asp:TreeNode Text="Artists" Value="Artists" NavigateUrl="~/View/Artist.aspx" />
+                                <asp:TreeNode Text="Albums" Value="Albums" NavigateUrl="~/View/Album.aspx" />
+                                <asp:TreeNode NavigateUrl="~/View/Song.aspx" Text="View Songs" Value="Songs" />
+                                --%>
+                            </asp:TreeNode>
+                            
+                            <asp:TreeNode Text="Search" Value="Search" SelectAction="Expand">
+                                <%--<asp:TreeNode NavigateUrl="~/Search/CustomSearch.aspx" Text="Custom" Value="Custom Search" />--%>
+                                <asp:TreeNode NavigateUrl="~/Search/AdvancedSearch.aspx" Text="Advanced" Value="Advanced Search" />
+                                <%--<asp:TreeNode NavigateUrl="~/Search/GuidedSearch.aspx" Text="Guided" Value="Guided Search" />--%>
+                            </asp:TreeNode>
+                            
+                            <asp:TreeNode SelectAction="Expand" Text="Administration" Value="Administration">
+                                <asp:TreeNode SelectAction="Expand" Text="User Administration" Value="Users">
+                                    <asp:TreeNode NavigateUrl="~/Admin/NewUser.aspx" Text="Add New User" Value="Add New User" />
+                                    <asp:TreeNode NavigateUrl="~/Admin/ModifyUser.aspx" Text="Edit/Remove User" Value="Edit/Remove User" />
+                                </asp:TreeNode>
+                                
+                                <asp:TreeNode Text="System Maintenance" Value="Modify" SelectAction="Expand">
+                                    <asp:TreeNode NavigateUrl="~/Admin/ProcessUploads.aspx" Text="Process Uploads" Value="Process Uploads" />
+                                    
+                                    <%--<asp:TreeNode NavigateUrl="~/Admin/Rebuild.aspx" Text="Rebuild Catalog" Value="Rebuild" />--%>
+                                    <%--<asp:TreeNode NavigateUrl="~/Admin/Synch.aspx" Text="Sync DB to Files" Value="Sync DB -&gt; Files" />--%>
+
+                                    <asp:TreeNode NavigateUrl="~/Admin/AdHocQuery.aspx" Text="AdHoc Query" Value="AdHoc Query" />
+                                </asp:TreeNode>
+                            </asp:TreeNode>
+                            
+                            <asp:TreeNode Text="Change Password" Value="Change Password" NavigateUrl="~/Admin/ModifyUser.aspx" />
+                            <asp:TreeNode NavigateUrl="~/logout.aspx" Text="Logout" Value="Logout" />
+                        </Nodes>
+                    </asp:TreeView>
+                </div>
+            </asp:Panel>
+        </form>
+    </body>
+</html>
