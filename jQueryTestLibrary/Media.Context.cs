@@ -27,9 +27,7 @@ namespace MediaLibrary
     
         public virtual DbSet<ALBUM> ALBUMS { get; set; }
         public virtual DbSet<ARTIST> ARTISTS { get; set; }
-        public virtual DbSet<LOG> LOGS { get; set; }
         public virtual DbSet<SONG> SONGS { get; set; }
-        public virtual DbSet<USER_SELECTION> USER_SELECTIONS { get; set; }
         public virtual DbSet<USER_PLAYLIST> USER_PLAYLISTS { get; set; }
         public virtual DbSet<USER_SECURITY> USER_SECURITYS { get; set; }
         public virtual DbSet<V_SONG_LIST> V_SONG_LISTS { get; set; }

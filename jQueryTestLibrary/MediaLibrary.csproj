@@ -68,9 +68,6 @@
     </Compile>
     <Compile Include="Artist.Partial.cs" />
     <Compile Include="ArtistManager.cs" />
-    <Compile Include="LOG.cs">
-      <DependentUpon>Media.tt</DependentUpon>
-    </Compile>
     <Compile Include="Media.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,9 +102,6 @@
       <DependentUpon>Media.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Security.Partial.cs" />
-    <Compile Include="USER_SELECTION.cs">
-      <DependentUpon>Media.tt</DependentUpon>
-    </Compile>
     <Compile Include="V_SONG_LIST.cs">
       <DependentUpon>Media.tt</DependentUpon>
     </Compile>

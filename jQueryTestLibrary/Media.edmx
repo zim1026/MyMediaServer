@@ -24,15 +24,6 @@
           <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
           <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
-        <EntityType Name="LOG">
-          <Key>
-            <PropertyRef Name="LOG_ID" />
-          </Key>
-          <Property Name="LOG_ID" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ENTRY" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
-          <Property Name="UPDATE_DATE" Type="datetime" />
-        </EntityType>
         <EntityType Name="SONG">
           <Key>
             <PropertyRef Name="SONG_ID" />
@@ -113,16 +104,6 @@
           <Property Name="UPDATE_DATE" Type="datetime" />
           <Property Name="ADMIN_FLAG" Type="bit" Nullable="false" />
           <Property Name="PREV_TO_LAST_LOGIN_DATE" Type="datetime" />
-        </EntityType>
-        <EntityType Name="USER_SELECTION">
-          <Key>
-            <PropertyRef Name="USER_SECURITY_ID" />
-            <PropertyRef Name="SONG_ID" />
-          </Key>
-          <Property Name="USER_SECURITY_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="SONG_ID" Type="numeric" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
-          <Property Name="UPDATE_DATE" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -205,38 +186,12 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_USER_SELECTION_SONG">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
-          <End Role="USER_SELECTION" Type="Self.USER_SELECTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SONG">
-              <PropertyRef Name="SONG_ID" />
-            </Principal>
-            <Dependent Role="USER_SELECTION">
-              <PropertyRef Name="SONG_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_SELECTION_USER_SECURITY">
-          <End Role="USER_SECURITY" Type="Self.USER_SECURITY" Multiplicity="1" />
-          <End Role="USER_SELECTION" Type="Self.USER_SELECTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_SECURITY">
-              <PropertyRef Name="USER_SECURITY_ID" />
-            </Principal>
-            <Dependent Role="USER_SELECTION">
-              <PropertyRef Name="USER_SECURITY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="MediaEntitiesStoreContainer">
           <EntitySet Name="ALBUM" EntityType="Self.ALBUM" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="ARTIST" EntityType="Self.ARTIST" Schema="MP3" store:Type="Tables" />
-          <EntitySet Name="LOG" EntityType="Self.LOG" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="SONG" EntityType="Self.SONG" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="USER_PLAYLIST" EntityType="Self.USER_PLAYLIST" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="USER_SECURITY" EntityType="Self.USER_SECURITY" Schema="MP3" store:Type="Tables" />
-          <EntitySet Name="USER_SELECTION" EntityType="Self.USER_SELECTION" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="V_SONG_LIST" EntityType="Self.V_SONG_LIST" store:Type="Views" store:Schema="MP3">
             <DefiningQuery>SELECT 
     [V_SONG_LIST].[ALBUM_ID] AS [ALBUM_ID], 
@@ -275,15 +230,7 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             <End Role="USER_SECURITY" EntitySet="USER_SECURITY" />
             <End Role="USER_PLAYLIST" EntitySet="USER_PLAYLIST" />
           </AssociationSet>
-          <AssociationSet Name="FK_USER_SELECTION_SONG" Association="Self.FK_USER_SELECTION_SONG">
-            <End Role="SONG" EntitySet="SONG" />
-            <End Role="USER_SELECTION" EntitySet="USER_SELECTION" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_SELECTION_USER_SECURITY" Association="Self.FK_USER_SELECTION_USER_SECURITY">
-            <End Role="USER_SECURITY" EntitySet="USER_SECURITY" />
-            <End Role="USER_SELECTION" EntitySet="USER_SELECTION" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -304,15 +251,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
           </Key>
           <Property Name="ARTIST_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ARTIST_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="LOG">
-          <Key>
-            <PropertyRef Name="LOG_ID" />
-          </Key>
-          <Property Name="LOG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ENTRY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
         </EntityType>
@@ -370,16 +308,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
           <Property Name="COMPOSER" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="CONDUCTOR" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="USER_SELECTION">
-          <Key>
-            <PropertyRef Name="USER_SECURITY_ID" />
-            <PropertyRef Name="SONG_ID" />
-          </Key>
-          <Property Name="USER_SECURITY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="SONG_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
-        </EntityType>
         <Association Name="FK_ALBUM_ARTIST">
           <End Role="ARTIST" Type="Self.ARTIST" Multiplicity="1" />
           <End Role="ALBUM" Type="Self.ALBUM" Multiplicity="*" />
@@ -404,24 +332,10 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_USER_SELECTION_SONG">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
-          <End Role="USER_SELECTION" Type="Self.USER_SELECTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SONG">
-              <PropertyRef Name="SONG_ID" />
-            </Principal>
-            <Dependent Role="USER_SELECTION">
-              <PropertyRef Name="SONG_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ALBUMS" EntityType="Self.ALBUM" />
           <EntitySet Name="ARTISTS" EntityType="Self.ARTIST" />
-          <EntitySet Name="LOGS" EntityType="Self.LOG" />
           <EntitySet Name="SONGS" EntityType="Self.SONG" />
-          <EntitySet Name="USER_SELECTIONS" EntityType="Self.USER_SELECTION" />
           <AssociationSet Name="FK_ALBUM_ARTIST" Association="Self.FK_ALBUM_ARTIST">
             <End Role="ARTIST" EntitySet="ARTISTS" />
             <End Role="ALBUM" EntitySet="ALBUMS" />
@@ -429,10 +343,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
           <AssociationSet Name="FK_SONG_ALBUM" Association="Self.FK_SONG_ALBUM">
             <End Role="ALBUM" EntitySet="ALBUMS" />
             <End Role="SONG" EntitySet="SONGS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_SELECTION_SONG" Association="Self.FK_USER_SELECTION_SONG">
-            <End Role="SONG" EntitySet="SONGS" />
-            <End Role="USER_SELECTION" EntitySet="USER_SELECTIONS" />
           </AssociationSet>
           <EntitySet Name="USER_PLAYLISTS" EntityType="MediaEntities.USER_PLAYLIST" />
           <AssociationSet Name="FK_USER_PLAYLIST_SONG" Association="MediaEntities.FK_USER_PLAYLIST_SONG">
@@ -443,10 +353,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
           <AssociationSet Name="FK_USER_PLAYLIST_USER_SECURITY" Association="MediaEntities.FK_USER_PLAYLIST_USER_SECURITY">
             <End Role="USER_SECURITY" EntitySet="USER_SECURITYS" />
             <End Role="USER_PLAYLIST" EntitySet="USER_PLAYLISTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USER_SELECTION_USER_SECURITY" Association="MediaEntities.FK_USER_SELECTION_USER_SECURITY">
-            <End Role="USER_SECURITY" EntitySet="USER_SECURITYS" />
-            <End Role="USER_SELECTION" EntitySet="USER_SELECTIONS" />
           </AssociationSet>
           <EntitySet Name="V_SONG_LISTS" EntityType="MediaEntities.V_SONG_LIST" />
         </EntityContainer>
@@ -498,18 +404,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
               <PropertyRef Name="USER_SECURITY_ID" />
             </Principal>
             <Dependent Role="USER_PLAYLIST">
-              <PropertyRef Name="USER_SECURITY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USER_SELECTION_USER_SECURITY">
-          <End Type="MediaEntities.USER_SECURITY" Role="USER_SECURITY" Multiplicity="1" />
-          <End Type="MediaEntities.USER_SELECTION" Role="USER_SELECTION" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USER_SECURITY">
-              <PropertyRef Name="USER_SECURITY_ID" />
-            </Principal>
-            <Dependent Role="USER_SELECTION">
               <PropertyRef Name="USER_SECURITY_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -572,16 +466,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LOGS">
-            <EntityTypeMapping TypeName="MediaEntities.LOG">
-              <MappingFragment StoreEntitySet="LOG">
-                <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
-                <ScalarProperty Name="ENTRY" ColumnName="ENTRY" />
-                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
-                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SONGS">
             <EntityTypeMapping TypeName="MediaEntities.SONG">
               <MappingFragment StoreEntitySet="SONG">
@@ -634,16 +518,6 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
                 <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
                 <ScalarProperty Name="COMPOSER" ColumnName="COMPOSER" />
                 <ScalarProperty Name="CONDUCTOR" ColumnName="CONDUCTOR" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="USER_SELECTIONS">
-            <EntityTypeMapping TypeName="MediaEntities.USER_SELECTION">
-              <MappingFragment StoreEntitySet="USER_SELECTION">
-                <ScalarProperty Name="USER_SECURITY_ID" ColumnName="USER_SECURITY_ID" />
-                <ScalarProperty Name="SONG_ID" ColumnName="SONG_ID" />
-                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
-                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

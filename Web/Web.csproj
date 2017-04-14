@@ -572,7 +572,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="AudioTest\" />
     <Folder Include="Models\" />
-    <Folder Include="OldSite\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ID3TagLibV2 - Server Version\ID3TagLibV2\ID3TagLibV2\ID3TagLibV2.csproj">

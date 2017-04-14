@@ -7,18 +7,14 @@
       <Diagram DiagramId="1d8a9a172af14732825d60f47dbcc123" Name="Diagram1">
         <EntityTypeShape EntityType="MediaEntities.ALBUM" Width="1.5" PointX="0.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MediaEntities.ARTIST" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MediaEntities.LOG" Width="1.5" PointX="9.875" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MediaEntities.SONG" Width="1.875" PointX="3.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MediaEntities.USER_SELECTION" Width="2" PointX="6.625" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="MediaEntities.FK_ALBUM_ARTIST" ManuallyRouted="false" />
         <AssociationConnector Association="MediaEntities.FK_SONG_ALBUM" ManuallyRouted="false" />
-        <AssociationConnector Association="MediaEntities.FK_USER_SELECTION_SONG" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MediaEntities.USER_PLAYLIST" Width="2.375" PointX="6.625" PointY="7.375" />
+        <EntityTypeShape EntityType="MediaEntities.USER_PLAYLIST" Width="2.375" PointX="6.625" PointY="4.875" />
         <AssociationConnector Association="MediaEntities.FK_USER_PLAYLIST_SONG" />
-        <EntityTypeShape EntityType="MediaEntities.USER_SECURITY" Width="2.375" PointX="6.625" PointY="3" />
+        <EntityTypeShape EntityType="MediaEntities.USER_SECURITY" Width="2.375" PointX="6.625" PointY="0.5" />
         <AssociationConnector Association="MediaEntities.FK_USER_PLAYLIST_USER_SECURITY" />
-        <AssociationConnector Association="MediaEntities.FK_USER_SELECTION_USER_SECURITY" />
-        <EntityTypeShape EntityType="MediaEntities.V_SONG_LIST" Width="1.875" PointX="9.875" PointY="3" />
+        <EntityTypeShape EntityType="MediaEntities.V_SONG_LIST" Width="1.875" PointX="9.625" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
