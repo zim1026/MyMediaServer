@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <button type="button" oncancel="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
+                <button type="button" oncancel="btn btn-primary" class="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
             </div>
         </div>
 

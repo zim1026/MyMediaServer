@@ -300,16 +300,15 @@ var UserSecurity = (function () {
         },
 
         AddNewUser: function () {
-            $('#userSecurityID').val();
-
             var _dialogWidth = 600;
 
             if ($(window).width() < _dialogWidth) {
                 _dialogWidth = $(window).width();
             }
 
-            $('#UserName').val();
-            $('#Password').val();
+            $('#userSecurityID').val('');
+            $('#UserName').val('');
+            $('#Password').val('');
             $('#ActiveFlag').prop('checked', true);
             $('#AdminFlag').prop('checked', false);
             $('#LockedFlag').prop('checked', false);
@@ -327,12 +326,6 @@ var UserSecurity = (function () {
 
 $(document).ready(function () {
     'use strict';
-
-    /*
-    $('#MasterNavBarLinks').children('li').each(function (index) {
-        $(this).removeClass('active');
-    });
-    */
 
     $('#MasterNavBarUserManagementLink').addClass('active');
 
