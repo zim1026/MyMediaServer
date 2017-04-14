@@ -298,7 +298,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Playlist.aspx" />
-    <Content Include="Playlist.css" />
+    <Content Include="Content\Playlist.css" />
     <Content Include="Playlist.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

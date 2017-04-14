@@ -3,7 +3,7 @@
 <%@ Register TagPrefix="TE" TagName="TagEditor" Src="TagEditor.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
-    <link href="Playlist.css" rel="stylesheet" />
+    <link href="Content/Playlist.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
