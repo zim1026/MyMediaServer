@@ -112,33 +112,6 @@
                             <div id="LastUpdated"></div>
                         </div>
                     </div>
-                    
-                    <!--
-                    <div class="row">
-                        <div class="col-sm-12">
-                            &nbsp;
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 text-center" style="padding-bottom:10px">
-                            <a href="PlayList.aspx" target="_blank" class="btn btn-primary">Play List</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 text-center" style="padding-bottom:10px">
-                            <a href="FileUpload.aspx" target="_blank" class="btn btn-primary" title="Upload / Process Uploaded Songs" style="width:79px">Files</a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-12 text-center">
-                            <a href="UserSecurity.aspx" target="_blank" class="btn btn-primary" title="Manage Users" style="width:79px">Users</a>
-                        </div>
-                    </div>
-                    --> 
-
                 </div>
             </div>
 
