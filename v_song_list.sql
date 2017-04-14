@@ -1,7 +1,7 @@
 USE [Media]
 GO
 
-/****** Object:  View [MP3].[V_SONG_LIST]    Script Date: 3/16/2017 08:11:33 ******/
+/****** Object:  View [MP3].[V_SONG_LIST]    Script Date: 4/13/2017 23:19:00 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,9 +9,13 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
+
+
 CREATE VIEW [MP3].[V_SONG_LIST]
 AS
 SELECT        
+	--top 20
 	al.ALBUM_ID,
 	ar.ARTIST_ID,
 	s.SONG_ID,
@@ -23,9 +27,10 @@ SELECT
 	s.YEAR,
 	s.GENRE,
 	s.TRACK_NUM,
-	s.FILENAME,
-	s.ABS_FILE_PATH,
-	s.REL_FILE_PATH,
+	--s.ID3V2_TITLE FILENAME,
+	'~/' + s.ABS_FILE_PATH ABS_FILE_PATH,
+	--s.ABS_FILE_PATH,
+	--s.REL_FILE_PATH,
 	s.CREATE_DATE, 
 	s.FILE_SIZE,
 	s.DURATION,
@@ -38,6 +43,9 @@ FROM
 		ON al.ARTIST_ID = ar.ARTIST_ID
 	INNER JOIN MP3.SONG s
 		ON s.ALBUM_ID = al.ALBUM_ID
+
+
+
 
 
 GO

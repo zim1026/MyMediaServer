@@ -1,7 +1,7 @@
 USE [Media]
 GO
 
-/****** Object:  Table [MP3].[ALBUM]    Script Date: 3/16/2017 08:03:58 ******/
+/****** Object:  Table [MP3].[ALBUM]    Script Date: 4/13/2017 23:17:19 ******/
 SET ANSI_NULLS ON
 GO
 
