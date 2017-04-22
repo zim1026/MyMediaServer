@@ -1,9 +1,8 @@
 ﻿namespace MediaLibrary
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Itst.Utilities.Web.JQuery;
+    using Utilities.Web.JQuery;
 
     public static class SongListManager
     {
@@ -25,7 +24,7 @@
             SearchSummary summary = new SearchSummary();
 
             List<V_SONG_LIST> songList;
-            
+
             using (var ctx = NewSongListContext())
             {
                 IQueryable<V_SONG_LIST> query = GetQuery(criteria, ctx);
@@ -44,7 +43,7 @@
         public static string GetNewestSongDate()
         {
             List<V_SONG_LIST> sl;
-            
+
             using (var ctx = NewSongListContext())
             {
                 sl = ctx.V_SONG_LISTS.ToList();

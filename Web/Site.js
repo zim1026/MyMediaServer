@@ -4,14 +4,40 @@ var Site = (function () {
     'use strict';
 
     return{
+        keepThisSessionAliveDammit: function () {
+            var randomQS = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            var randomVal = Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 5);
 
+            $.ajax({
+                url: 'SessionHeartbeat.ashx?' + randomQS + '=' + randomVal,
+                cache: false,
+                success: function () {
+                    //alert('got it:' + randomQS + '=' + randomVal);
+                },
+                error: function (jqXHR, exception) {
+                    alert(jqXHR.responseText);
+                }
+            });
+        }
     };
 }());
 
 $(document).ready(function () {
     'use strict';
 
-    $("#loading").dialog({
+    //alert(Math.random().toString(36).replace(/[^a-zA-Z0-9]+/g, '').substr(0, 5));
+
+    $.timeoutDialog({
+        timeout: 600,    //session duration in seconds (10min)
+        countdown: 60,  //number of seconds (1min) prior to forced expiration / when to alert user of pending expiration
+        keep_alive_url: 'WebServices/WebService.asmx/KeepAlive',
+        logout_url: 'Logout.aspx',
+        logout_redirect_url: 'Logon.aspx',  //where to go after session expiration/logout
+        restart_on_yes: true,
+        session_idle_url: 'WebServices/WebService.asmx/GetSessionIdleTime'
+    });
+
+    $('#loading').dialog({
         title: 'Processing...',
         width: 300,
         height: 220,
@@ -19,9 +45,12 @@ $(document).ready(function () {
         modal: true,
         autoOpen: false,
         open: function (event, ui) {
-            $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+            $('.ui-dialog-titlebar-close', ui.dialog | ui).hide();
         }
     });
+
+     window.setInterval(Site.keepThisSessionAliveDammit, 480000);    //8min
+    //window.setInterval(Site.keepThisSessionAliveDammit, 5000);    //5sec
 });
 
 (function ($) {

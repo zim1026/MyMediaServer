@@ -4,13 +4,13 @@
 
     public partial class BasePage : System.Web.UI.Page
     {
-        protected bool AuthorizedUser
+        protected bool IsAuthorizedUser
         {
             get
             {
                 if (this.Session["user"] != null)
                 {
-                    return (Session["user"] as USER_SECURITY).ACTIVE_FLAG && !(Session["user"] as USER_SECURITY).LOCKED_FLAG;
+                    return User.ACTIVE_FLAG && !User.LOCKED_FLAG;
                 }
                 else
                 {
@@ -23,7 +23,7 @@
             {
                 if (this.Session["user"] != null)
                 {
-                    return (Session["user"] as USER_SECURITY).ADMIN_FLAG;
+                    return User.ADMIN_FLAG;
                 }
                 else
                 {
@@ -37,11 +37,29 @@
             {
                 if (Session["user"] != null) 
                 {
-                    return (Session["user"] as USER_SECURITY).USERNAME;
+                    return User.USERNAME;
                 }
                 else
                 {
                     return string.Empty;
+                }
+            }
+        }
+        new protected USER_SECURITY User
+        {
+            get
+            {
+                return (USER_SECURITY)this.Session["user"];
+            }
+            set
+            {
+                if (this.Session["user"] != null)
+                {
+                    this.Session["user"] = value;
+                }
+                else
+                {
+                    this.Session.Add("user", value);
                 }
             }
         }

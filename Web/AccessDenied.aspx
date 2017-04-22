@@ -31,10 +31,12 @@
                    
                     <br />
                     <br />
-
+                    
+                    <!--
                     <h2>
                         <a href="Logon.aspx" class="underline_link">Please drive through.</a>
                     </h2>
+                    -->
                 </div>
             </center>
         </form>

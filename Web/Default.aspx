@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Web.Default" ClientIDMode="Static" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Web.Default" ClientIDMode="Static" %>
 <%@ MasterType virtualpath="~/Site.Master" %>
 <%@ Register TagPrefix="TE" TagName="TagEditor" Src="TagEditor.ascx" %>
 
@@ -112,6 +112,33 @@
                             <div id="LastUpdated"></div>
                         </div>
                     </div>
+                    
+                    <!--
+                    <div class="row">
+                        <div class="col-sm-12">
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center" style="padding-bottom:10px">
+                            <a href="PlayList.aspx" target="_blank" class="btn btn-primary">Play List</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center" style="padding-bottom:10px">
+                            <a href="FileUpload.aspx" target="_blank" class="btn btn-primary" title="Upload / Process Uploaded Songs" style="width:79px">Files</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <a href="UserSecurity.aspx" target="_blank" class="btn btn-primary" title="Manage Users" style="width:79px">Users</a>
+                        </div>
+                    </div>
+                    --> 
+
                 </div>
             </div>
 
@@ -120,7 +147,7 @@
     
     <div id="SongListContainer" class="table-responsive" style="overflow-x:hidden; font-size:12px">
         <table id="SongListTable" class="dataTable table-bordered cell-border compact hover stripe">
-            <thead class="dataTableHeader">
+            <thead>
                 <tr>
                     <th class="hidden">SongId</th>
                     <th><!--Details Button--></th>

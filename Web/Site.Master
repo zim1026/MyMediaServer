@@ -27,10 +27,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link type="text/css" href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link type="text/css" rel="stylesheet" href="Content/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="Content/Custom.css" />
+    <link type="text/css" rel="stylesheet" href="Content/Custom.css" />
+    <link type="text/css" rel="stylesheet" href="Content/timeout-dialog.css" />
 
     <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -46,7 +47,7 @@
                     </div>
                     <ul id="MasterNavBarLinks" class="nav navbar-nav">
                         <li id="MasterNavBarHomeLink"><a href="Default.aspx">Home</a></li>
-                        <li id="MasterNavBarPlaylistLink"><a href="Playlist.aspx">Play List</a></li>
+                        <li id="MasterNavBarPlaylistLink"><a href="Playlist.aspx">Playlist</a></li>
                         <% if(IsAdmin) %>
                         <% { %>    
                             <li id="MasterNavBarUploadsLink"><a href="FileUpload.aspx">Uploads</a></li>    
@@ -54,7 +55,7 @@
                         <% } %>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
-                        <li><a href="Logout.aspx"><%=Username %> - Logout</a></li>
+                        <li><a href="Logout.aspx"><%=Username %>: Logout</a></li>
                     </ul>
                 </div>
             </nav>
@@ -73,9 +74,10 @@
     <script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery-ui-1.12.1.min.js"></script>
     <script type="text/javascript" src="Scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="Site.js"></script>
+    <script type="text/javascript" src="Scripts/timeout-dialog.js"></script>
 
     <asp:ContentPlaceHolder ID="ScriptContent" runat="server">
-        <script type="text/javascript" src="Site.js"></script>
     </asp:ContentPlaceHolder>
 </body>
 

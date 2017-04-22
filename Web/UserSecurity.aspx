@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserSecurity.aspx.cs" Inherits="Web.UserSecurity" %>
+﻿<%@ Page Title="User Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserSecurity.aspx.cs" Inherits="Web.UserSecurity" %>
 <%@ MasterType virtualpath="~/Site.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <button type="button" oncancel="btn btn-primary" class="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
+                <button type="button" oncancel="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
             </div>
         </div>
 
@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    <div id="UserListContainer" class="table-responsive" style="overflow-x:hidden; font-size:12px;">
+    <div id="UserListContainer" class="table-responsive" style="overflow-x:hidden; font-size:12px">
         <table id="UserListTable" class="dataTable table-bordered cell-border compact hover stripe">
-            <thead class="dataTableHeader">
+            <thead>
                 <tr>
                     <th class="hidden">UserSecurityID</th>
                     <th><!--Details Button--></th>

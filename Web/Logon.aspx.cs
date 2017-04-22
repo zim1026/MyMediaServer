@@ -1,20 +1,22 @@
 ﻿namespace Web
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using System.Security.Cryptography;
+    using System.Text;
     using System.Web;
-    using System.Web.UI;
-    using System.Web.UI.WebControls;
+    using System.Web.Security;
     using MediaLibrary;
-
-    public partial class Logon : System.Web.UI.Page
+    
+    public partial class Logon : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
+                if (IsAuthorizedUser)
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
         }
 
@@ -27,8 +29,9 @@
                 if (user != null)
                 {
                     bool denyAccess = true;
-                    
-                    if (user.PASSWORD == txtPassword.Text)
+
+                    if (user.PASSWORD.Equals(UserSecurityManager.HashString(txtPassword.Text.Trim(), UserSecurityManager.HashName.SHA512)) ||
+                        user.PASSWORD.Equals(txtPassword.Text.Trim()))
                     {
                         if (user.LAST_LOGIN_DATE.HasValue)
                         {
@@ -37,34 +40,51 @@
 
                         user.LAST_LOGIN_DATE = DateTime.Now;
 
+                        if (user.LOGIN_FAILURE_COUNT > 0)
+                        {
+                            user.LOGIN_FAILURE_COUNT = user.LOGIN_FAILURE_COUNT - 1;
+                        }
                         denyAccess = false;
                     }
                     else
                     {
                         user.LAST_FAILURE_DATE = DateTime.Now;
                         user.LOGIN_FAILURE_COUNT = user.LOGIN_FAILURE_COUNT + 1;
+                        if (user.LOGIN_FAILURE_COUNT > 2)
+                        {
+                            user.LOCKED_FLAG = true;
+                        }
                     }
 
                     user = UserSecurityManager.Save(user);
 
                     if (denyAccess)
                     {
-                        Response.Redirect("~/AccessDenied.aspx");
+                        Response.Redirect("~/AccessDenied.aspx", true);
                     }
                     else
                     {
+                        /*
                         if (this.Session["user"] != null)
                         {
                             Session.Remove("user");
                         }
-
                         this.Session.Add("user", user);
-                        Response.Redirect("Default.aspx");
+                        */
+                        this.User = user;
+
+                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, user.USERNAME, DateTime.Now, DateTime.Now.AddMinutes(30), true, user.USER_SECURITY_ID.ToString());
+                        HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(ticket));
+                        cookie.Expires = ticket.Expiration;
+                        cookie.Path = FormsAuthentication.FormsCookiePath;
+                        Response.Cookies.Add(cookie);
+
+                        Response.Redirect(string.IsNullOrWhiteSpace(this.Request["ReturnUrl"]) ? "Default.aspx" : this.Request["ReturnUrl"], true);
                     }
                 }
                 else
                 {
-                    Response.Redirect("~/AccessDenied.aspx");
+                    Response.Redirect("~/AccessDenied.aspx", true);
                 }
             }
         }

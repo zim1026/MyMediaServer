@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public static class UserPlaylistManager
     {
@@ -28,7 +26,7 @@
                     .FirstOrDefault();
             }
         }
-        
+
         public static USER_PLAYLIST Save(USER_PLAYLIST playlist)
         {
             if (playlist == null)

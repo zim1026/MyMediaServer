@@ -22,6 +22,12 @@
 
         protected void Session_Start(Object sender, EventArgs e)
         {
+            if (HttpContext.Current.Session["SessionStartTime"] != null)
+            {
+                HttpContext.Current.Session.Remove("SessionStartTime");
+            }
+            HttpContext.Current.Session.Add("SessionStartTime", DateTime.Now);
+
             foreach (FileInfo file in new DirectoryInfo(HttpContext.Current.Server.MapPath("~/Images")).GetFiles("tmp*.jpg"))
             {
                 file.Delete();

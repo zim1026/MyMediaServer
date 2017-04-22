@@ -25,19 +25,19 @@
             }
         }
         public Nullable<DateTime> CreateDate { get; set; }
-        
+
         public string ArtistName { get; set; }
         public SearchType ArtistSearchType { get; set; }
-        
+
         public string AlbumName { get; set; }
         public SearchType AlbumSearchType { get; set; }
-        
+
         public string SongTitle { get; set; }
         public SearchType SongSearchType { get; set; }
-        
+
         public string Genre { get; set; }
         public SearchType GenreSearchType { get; set; }
-        
+
         public enum SearchType
         {
             Exact,

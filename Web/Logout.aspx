@@ -5,24 +5,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>
-        Now Git!
+        My Media Server: Logout
     </title>
 
-    <link type="text/css" href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link type="text/css" rel="stylesheet" href="Content/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="Content/Custom.css" />
+    <link type="text/css" rel="stylesheet" href="Content/Custom.css" />
 
 </head>
 <body>
     <form id="form1" runat="server">
+        <br />
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <img src="Images/WellBye.gif" class="img-responsive img-rounded" style="margin-left:auto; margin-right:auto;" />
                     <br />
                     <br />
-                    <a href="Logon.aspx">Thank You, Come Again</a>
+                    <a href="Logon.aspx">Thank You, Please Come Again</a>
                 </div>
             </div>
         </div>

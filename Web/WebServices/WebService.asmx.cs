@@ -6,14 +6,13 @@
     using System.Drawing;
     using System.IO;
     using System.Linq;
-    using System.Net;
     using System.Web;
     using System.Web.Script.Services;
     using System.Web.Services;
     using System.Web.UI.WebControls;
-    using Itst.Utilities.Web.JQuery;
     using MediaLibrary;
-
+    using MediaLibrary.Utilities.Web.JQuery;
+    
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
@@ -151,6 +150,8 @@
         {
             if (this.Context.Session["user"] != null)
             {
+                ResetSessionStartTime(this.Context);
+                
                 decimal userSecurityID = (this.Context.Session["user"] as USER_SECURITY).USER_SECURITY_ID;
 
                 RequestData requestData = DataTablesHelper.ParseSentRequestParameters(this.Context);
@@ -167,7 +168,9 @@
                     {
                         DT_RowId = X.SONG_ID,
                         SONG_ID = X.SONG_ID,
+                        ARTIST_ID = X.ARTIST_ID,
                         ARTIST_NAME = X.ARTIST_NAME,
+                        ALBUM_ID = X.ALBUM_ID,
                         ALBUM_NAME = X.ALBUM_NAME,
                         ART = GetRelativeImageFile(GetImageFileFromImageBytes(X.ALBUM_ART, imageFolder)),
                         SONG_TITLE = X.SONG_TITLE,
@@ -553,6 +556,8 @@
         {
             if (this.Context.Session["user"] != null)
             {
+                ResetSessionStartTime(this.Context);
+
                 decimal userSecurityID = (this.Context.Session["user"] as USER_SECURITY).USER_SECURITY_ID;
 
                 IList<USER_PLAYLIST> pl = UserPlaylistManager.GetUserPlaylist(Convert.ToDecimal(userSecurityID));
@@ -670,7 +675,7 @@
                 isAuthorized = isAuthorized
             };
         }
-        
+
         [WebMethod]
         public USER_SECURITY GetUserByName(string username)
         {
@@ -696,7 +701,50 @@
         }
         #endregion User Management
 
+        #region Session Management
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true)]
+        public string KeepAlive()
+        {
+            ResetSessionStartTime(this.Context);
+
+            return "OK";
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true)]
+        public DateTime GetSessionStart()
+        {
+            if (this.Context.Session["SessionStartTime"] != null)
+            {
+                return (DateTime)this.Context.Session["SessionStartTime"];
+            }
+
+            throw new ApplicationException("GetSessionStart() encountered a NULL session");
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(UseHttpGet = true)]
+        public double GetSessionIdleTime()
+        {
+            TimeSpan span = DateTime.Now - (DateTime)this.Context.Session["SessionStartTime"];
+            return span.TotalSeconds;
+        }
+        #endregion Session Management
+
         #region Privates
+        private static void ResetSessionStartTime(HttpContext context)
+        {
+            if (context.Session["SessionStartTime"] != null)
+            {
+                context.Session["SessionStartTime"] = DateTime.Now;
+            }
+            else
+            {
+                context.Session.Add("SessionStartTime", DateTime.Now);
+            }
+        }
+        
         private static TimeSpan GetTimespanFromDuration(string songDuration)
         {
             TimeSpan ts = new TimeSpan(0, 0, 0);
@@ -765,7 +813,7 @@
                 }
                 
             }
-            catch(Exception ex)
+            catch
             {
                 return string.Empty;
             }

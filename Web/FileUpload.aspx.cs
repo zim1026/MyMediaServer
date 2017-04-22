@@ -10,7 +10,7 @@
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!AuthorizedUser || !IsAdmin)
+            if (!IsAuthorizedUser || !IsAdmin)
             {
                 Response.Redirect("AccessDenied.aspx");
             }

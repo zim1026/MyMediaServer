@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileUpload.aspx.cs" Inherits="Web.FileUpload" ClientIDMode="Static" %>
+﻿<%@ Page Title="File Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FileUpload.aspx.cs" Inherits="Web.FileUpload" ClientIDMode="Static" %>
 <%@ MasterType virtualpath="~/Site.Master" %>
 <%@ Register TagPrefix="CWC" Assembly="CustomWebControls" Namespace="CustomWebControls" %>
 <%@ Register TagPrefix="TE" TagName="TagEditor" Src="TagEditor.ascx" %>

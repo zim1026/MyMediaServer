@@ -13,12 +13,10 @@
   </configSections>
 
   <connectionStrings>
-<!--
     <add name="Web.Properties.Settings.MediaEntitiesConnection" connectionString="&lt;add name=&quot;MediaEntitiesConnection&quot; connectionString=&quot;metadata=res://*/Media.csdl|res://*/Media.ssdl|res://*/Media.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=MEDIA2K10;initial catalog=Media;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&amp;quot;&quot; providerName=&quot;System.Data.EntityClient&quot; /&gt;" />
     <add name="MediaEntitiesConnection" connectionString="metadata=res://*/Media.csdl|res://*/Media.ssdl|res://*/Media.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MEDIA2K10;initial catalog=Media;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
       providerName="System.Data.EntityClient" />
--->
-    <add name="Entities" connectionString="metadata=res://*/Media.csdl|res://*/Media.ssdl|res://*/Media.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MEDIA2K10;initial catalog=Media;User Id=MediaServerWeb;Password=Girl25f2!@;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+    <add name="Entities" connectionString="metadata=res://*/Media.csdl|res://*/Media.ssdl|res://*/Media.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=MEDIA2K10;initial catalog=Media;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
       providerName="System.Data.EntityClient" />
   </connectionStrings>
   <system.webServer>
@@ -30,9 +28,9 @@
         <defaultDocument>
             <files>
                 <clear/>
-                <add value="default.aspx"/>
-                <!--
                 <add value="Logon.aspx"/>  
+                <!--
+                <add value="default.aspx"/>
                 <add value="index.html"/>
                 <add value="Default.htm"/>
                 <add value="Default.asp"/>
@@ -56,15 +54,6 @@
     <compilation debug="true" targetFramework="4.5.1"/>
     <httpRuntime targetFramework="4.5.1" maxRequestLength="1048576"/>
     <sessionState mode="InProc" timeout="10" cookieless="false" />
-
-    <authentication mode="Forms">
-      <forms name="MediaServerAuth" loginUrl="Logon.aspx" protection="All" path="/" timeout="30" slidingExpiration="true" />
-    </authentication>
-
-    <authorization>
-      <deny users ="?" />
-    </authorization>
-
     <webServices>
       <protocols>
         <add name="HttpGet"/>

@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Playlist.aspx.cs" Inherits="Web.Playlist" ClientIDMode="Static" %>
+﻿<%@ Page Title="User Playlist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Playlist.aspx.cs" Inherits="Web.Playlist" ClientIDMode="Static" %>
 <%@ MasterType virtualpath="~/Site.Master" %>
 <%@ Register TagPrefix="TE" TagName="TagEditor" Src="TagEditor.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
-    <link href="Content/Playlist.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="Content/Playlist.css" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">

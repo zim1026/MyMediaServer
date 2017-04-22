@@ -4,6 +4,11 @@
     using MediaLibrary;
     public partial class Site : System.Web.UI.MasterPage
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            this.Page.Title = "My Media Server: " + this.Page.Title;
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 

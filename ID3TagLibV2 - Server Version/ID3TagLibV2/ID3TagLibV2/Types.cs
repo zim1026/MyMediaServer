@@ -1,7 +1,10 @@
 ﻿
-namespace ID3TagLibV2 {
-    public abstract class Types {
-        public enum ID3Fields {
+namespace ID3TagLibV2
+{
+    public abstract class Types
+    {
+        public enum ID3Fields
+        {
             id3v1Artists,
             id3v1Artist,
             AlbumArtists,
@@ -29,7 +32,8 @@ namespace ID3TagLibV2 {
             Performers
         }
 
-        public struct ArtCollecton {
+        public struct ArtCollecton
+        {
             public TagLib.PictureType type;
             public byte[] ImageData;
         }

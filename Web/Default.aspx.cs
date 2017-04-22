@@ -5,7 +5,7 @@
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!AuthorizedUser)
+            if (!IsAuthorizedUser)
             {
                 Response.Redirect("Logon.aspx");
             }

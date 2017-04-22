@@ -55,10 +55,6 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ItstDevelopmentKit, Version=1.0.6284.14645, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\ItstDevelopmentKit.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -280,15 +276,17 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\timeout-dialog.css" />
     <Content Include="Images\running-car.gif" />
     <Content Include="Images\sort_asc.png" />
     <Content Include="Images\sort_asc_disabled.png" />
     <Content Include="Images\sort_both.png" />
     <Content Include="Images\sort_desc.png" />
     <Content Include="Images\sort_desc_disabled.png" />
+    <Content Include="Images\timeout-icon.png" />
     <Content Include="Images\WellBye.gif" />
+    <Content Include="KeepAlive.html" />
     <Content Include="Logon.aspx" />
-    <Content Include="Logon.js" />
     <Content Include="Logout.aspx" />
     <Content Include="packages.config" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
@@ -298,7 +296,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <None Include="Scripts\jquery-2.1.0-vsdoc.js" />
     <Content Include="Playlist.aspx" />
-    <Content Include="Content\Playlist.css" />
+    <Content Include="Playlist.css" />
     <Content Include="Playlist.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -382,6 +380,7 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\timeout-dialog.js" />
     <Content Include="Site.js" />
     <Content Include="TagEditor.ascx" />
     <Content Include="TagEditor.js" />
@@ -389,29 +388,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="UserSecurity.aspx" />
     <Content Include="UserSecurity.js" />
-    <Content Include="Web References\WebServiceReference\ALBUM.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WebServiceReference\ARTIST.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WebServiceReference\ID3Tag.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WebServiceReference\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\WebServiceReference\SearchSummary.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WebServiceReference\SONG.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WebServiceReference\USER_SECURITY.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\WebServiceReference\WebService.wsdl" />
+    <Content Include="SessionHeartbeat.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -469,7 +446,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WebServiceReference\WebService.disco" />
     <Content Include="WebServices\WebService.asmx" />
     <Content Include="bin\policy.2.0.taglib-sharp.config" />
     <None Include="bin\Web.dll.config" />
@@ -479,7 +455,9 @@
     <Content Include="Scripts\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +515,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SessionHeartbeat.ashx.cs">
+      <DependentUpon>SessionHeartbeat.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -558,11 +539,6 @@
     <Compile Include="UserSecurity.aspx.designer.cs">
       <DependentUpon>UserSecurity.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WebServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="WebServices\WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -572,6 +548,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="AudioTest\" />
     <Folder Include="Models\" />
+    <Folder Include="OldSite\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ID3TagLibV2 - Server Version\ID3TagLibV2\ID3TagLibV2\ID3TagLibV2.csproj">
@@ -588,19 +565,6 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:60015/WebServices/WebService.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebServiceReference\</RelPath>
-      <UpdateFromURL>http://localhost:60015/WebServices/WebService.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Web_WebServiceReference_WebService</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

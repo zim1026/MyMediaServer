@@ -1,7 +1,9 @@
-﻿namespace ID3TagLibV2 {
+﻿namespace ID3TagLibV2
+{
     using System;
 
-    public class ID3Tag:IDisposable {
+    public class ID3Tag : IDisposable
+    {
         #region Privates
         private static readonly byte[] empty = new byte[0];
         private string[] _albumArtists;
@@ -14,7 +16,8 @@
         private string _id3v1Title;
         #endregion Privates
 
-        public ID3Tag() {
+        public ID3Tag()
+        {
             AlbumArtists = new string[1] { string.Empty };
             Album = string.Empty;
             Title = string.Empty;
@@ -30,8 +33,8 @@
             Lyrics = string.Empty;
             Comment = string.Empty;
             Conductor = string.Empty;
-            
-            AlbumArt = new byte[]{};
+
+            AlbumArt = new byte[] { };
             BackCoverImage = new byte[] { };
             ArtistImage = new byte[] { };
             BandImage = new byte[] { };
@@ -44,24 +47,27 @@
             TrackNum = 0;
             DiscNum = 0;
         }
-        
-        public string[] id3v1Artists {
+
+        public string[] id3v1Artists
+        {
             /*
             get { id3v1StringArray(ref _id3v1artists);
                   return _id3v1artists; }
             */
             get { return _id3v1artists.Length == 0 ? id3v1StringArray(ref _albumArtists) : id3v1StringArray(ref _id3v1artists); }
-            set { _id3v1artists = ( (value == null || value.Length == 0 )? new string[1] {string.Empty} : value); }
+            set { _id3v1artists = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
 
-        public string id3v1Artist { 
+        public string id3v1Artist
+        {
             get { return id3v1String(id3v1Artists[0]).Length == 0 ? id3v1String(AlbumArtist) : id3v1String(id3v1Artists[0]); }
             set { id3v1Artists[0] = id3v1String(value); }
         }
-        
-        public string[] AlbumArtists { 
+
+        public string[] AlbumArtists
+        {
             get { return _albumArtists; }
-            set { _albumArtists = ( (value == null || value.Length == 0)? new string[1] {string.Empty} : value); }
+            set { _albumArtists = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
         public string AlbumArtist { get { return AlbumArtists[0]; } set { AlbumArtists[0] = value; } }
 
@@ -70,23 +76,26 @@
             get { return _artists; }
             set { _artists = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
-        public string Artist { get { return Artists[0]; }  set { Artists[0] = value; } }
-        
+        public string Artist { get { return Artists[0]; } set { Artists[0] = value; } }
+
         public string Album { get; set; }
-        public string id3v1Album {
+        public string id3v1Album
+        {
             get { return id3v1String(_id3v1Album).Length == 0 ? id3v1String(Album) : id3v1String(_id3v1Album); }
             set { _id3v1Album = id3v1String(value); }
         }
-        
+
         public string Title { get; set; }
-        public string id3v1Title {
+        public string id3v1Title
+        {
             get { return id3v1String(_id3v1Title).Length == 0 ? id3v1String(Title) : id3v1String(_id3v1Title); }
             set { _id3v1Title = id3v1String(value); }
         }
 
-        public string[] Genres {
+        public string[] Genres
+        {
             get { return _genres; }
-            set { _genres = ( (value == null || value.Length == 0)? new string[1] { string.Empty } : value); }
+            set { _genres = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
         public string Genre { get { return Genres[0]; } set { Genres[0] = value; } }
 
@@ -122,26 +131,30 @@
         public byte[] ArtistImage { get; set; }
         public byte[] BandImage { get; set; }
 
-        public string[] Composers {
+        public string[] Composers
+        {
             get { return _composers; }
-            set { _composers = ((value == null || value.Length == 0 )? new string[1] {string.Empty} : value); }
+            set { _composers = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
         public string Composer { get { return Composers[0]; } set { Composers[0] = value; } }
 
-        public string[] Performers {
+        public string[] Performers
+        {
             get { return _performers; }
             set { _performers = ((value == null || value.Length == 0) ? new string[1] { string.Empty } : value); }
         }
         public string Performer { get { return Performers[0]; } set { Performers[0] = value; } }
-        
-        public string FileNameOnly {
+
+        public string FileNameOnly
+        {
             get { return !String.IsNullOrEmpty(FileName) ? System.IO.Path.GetFileName(FileName) : string.Empty; }
         }
         public string FileName { get; set; }
 
-        public static string id3v1String(string value) {
-            if(!string.IsNullOrWhiteSpace(value))
-                if(value.Length > 30)
+        public static string id3v1String(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value))
+                if (value.Length > 30)
                     return value.Substring(0, 30);
                 else
                     return value;
@@ -149,26 +162,28 @@
                 return String.Empty;
         }
 
-        public static string[] id3v1StringArray(string[] value) {
+        public static string[] id3v1StringArray(string[] value)
+        {
             string[] _v1Array = new string[value.Length];
 
-            for(int i = 0;i < value.Length;i++)
+            for (int i = 0; i < value.Length; i++)
                 _v1Array[i] = id3v1String(value[i]);
 
             return _v1Array;
         }
-        
-        public static string[] id3v1StringArray(ref string[] value) {
+
+        public static string[] id3v1StringArray(ref string[] value)
+        {
             string[] _v1Array = new string[value.Length];
 
-            for(int i = 0;i < value.Length;i++)
+            for (int i = 0; i < value.Length; i++)
                 _v1Array[i] = id3v1String(value[i]);
 
             return _v1Array;
         }
 
         public string Copyright { get; set; }
-        
+
         /*
         public static void id3v1StringArray(ref string[] value) {
             for(int x = 0;x < value.Length;x++)
@@ -176,7 +191,8 @@
         }
         */
 
-        void IDisposable.Dispose() {
+        void IDisposable.Dispose()
+        {
             AlbumArt = empty;
             BackCoverImage = empty;
             ArtistImage = empty;
