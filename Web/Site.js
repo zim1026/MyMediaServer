@@ -18,6 +18,43 @@ var Site = (function () {
                     alert(jqXHR.responseText);
                 }
             });
+        },
+
+        IsAdminUser: function () {
+            var returnValue = false;
+            var canReturn = false;
+
+            $.ajax({
+                async: false,
+                url: 'WebServices/WebService.asmx/IsAdminUser',
+                data: {},
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                converters: {
+                    "text json": function (data) {
+                        return $.parseJSON(data, true);
+                    }
+                },
+                beforeSend: function () {
+                    $("#loading").dialog('open');
+                },
+                success: function (response) {
+                    canReturn = true;
+                    returnValue = response.d;
+
+                    $('#loading').dialog('close');
+                },
+                error: function (jqXHR, exception) {
+                    $('#loading').dialog('close');
+
+                    alert(jqXHR.responseText);
+                }
+            });
+
+            if (canReturn) {
+                return returnValue;
+            }
         }
     };
 }());

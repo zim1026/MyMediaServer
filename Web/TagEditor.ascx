@@ -33,24 +33,23 @@
 
         <div class="col-sm-5 col-xs-12">
             <table class="table-condensed table-responsive">
-                <tr>
-                    <td style="text-align: right; font-weight: bold;">
+                <tr><td style="text-align: right; font-weight: bold;">
                         <button type="button" id="editArtist" onclick="Javascript:TagEditor.OpenArtistDialog();"
-                            class="btn btn-link" title="Modify Artist Name" style="padding:0; font-weight:bold">Artist</button>
+                            class="btn-small btn-info" title="Modify Artist Name">Artist</button>
                     </td>
                     <td style="width: 100%">
                         <input type="text" id="artistText" style="width: 100%" class="form-control" />
-                        <select id="ddlArtist" style="width: 100%" class="form-control" ></select>
+                        <select id="ddlArtist" style="width: 100%" class="form-control" onchange="JavaScript:TagEditor.PopulateAlbums();" ></select>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: right; font-weight: bold;">
                         <button type="button" id="editAlbum" onclick="Javascript:TagEditor.OpenAlbumDialog();"
-                            class="btn btn-link" title="Modify Album Name" style="padding:0; font-weight:bold">Album</button>
+                            class="btn-small btn-info" title="Modify Album Name">Album</button>
                     </td>
                     <td>
                         <input type="text" id="albumText" style="width: 100%" class="form-control" />
-                        <select id="ddlAlbum" style="width: 100%" class="form-control"></select>
+                        <select id="ddlAlbum" style="width: 100%" class="form-control" onchange="JavaScript:TagEditor.CheckAlbumValue();"></select>
                     </td>
                 </tr>
                 <tr>
@@ -174,13 +173,13 @@
                         <table style="width:100%">
                             <tr>
                                 <td>
-                                    <input type="text" id="sampleRate" class="form-control" style="font-size:11px" readonly />
+                                    <input type="text" id="sampleRate" class="form-control" readonly />
                                 </td>
                                 <td style="text-align:right; padding-left:10px; padding-right:5px">
                                     <label for="bitrate">Bitrate</label>
                                 </td>
                                 <td>
-                                    <input type="text" id="bitrate" class="form-control" style="font-size:11px" readonly />
+                                    <input type="text" id="bitrate" class="form-control" readonly />
                                 </td>
                             </tr>
                         </table>
@@ -188,16 +187,15 @@
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="2">
-                        <!--<button type="button" onclick="Javascript:TagEditor.CheckDDLValues();">Test</button>-->
-                        <button id="UpdateFileTag" onclick="Javascript:TagEditor.UpdateTag();" class="btn btn-primary">Update Tag Data</button>
+                        <button id="UpdateFileTag" onclick="Javascript:TagEditor.UpdateTag();" class="btn-small btn-danger">Update Details</button>
                         &nbsp;
                         &nbsp;
-                        <button type="button" id="TagEditorClose" class="btn btn-primary" onclick="Javascript:TagEditor.CloseTagEditorDialog();">Close</button>
+                        <button type="button" id="TagEditorClose" class="btn-small" onclick="Javascript:TagEditor.CloseTagEditorDialog();">Close</button>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align:center" colspan="2">
-                        <button type="button" id="Playlister" class="btn btn-default" onclick="JavaScript: TagEditor.PlaylistSong();"></button>
+                        <button type="button" id="Playlister" class="btn-small btn-primary" onclick="JavaScript: TagEditor.PlaylistSong();"></button>
                     </td>
                 </tr>
             </table>
@@ -228,12 +226,12 @@
     <table style="width:100%">
         <tr>
             <td style="text-align:right; width:50%">
-                <button type="button" class="btn btn-primary" onclick="Javascript:TagEditor.SaveArtistDialog();">Save</button>
+                <button type="button" id="SaveArtist" class="btn-small btn-danger" onclick="Javascript:TagEditor.SaveArtistDialog();">Save</button>
                 &nbsp;
             </td>
             <td style="width:50%">
                 &nbsp;
-                <button type="button" class="btn" onclick="Javascript:TagEditor.CloseArtistDialog();">Close</button>
+                <button type="button" class="btn-small" onclick="Javascript:TagEditor.CloseArtistDialog();">Close</button>
             </td>
         </tr>
     </table>
@@ -256,12 +254,12 @@
     <table style="width:100%">
         <tr>
             <td style="text-align:right; width:50%">
-                <button type="button" class="btn btn-primary" onclick="Javascript:TagEditor.SaveAlbumDialog();">Save</button>
+                <button type="button" id="SaveAlbum" class="btn-small btn-danger" onclick="Javascript:TagEditor.SaveAlbumDialog();">Save</button>
                 &nbsp;
             </td>
             <td style="width:50%">
                 &nbsp;
-                <button type="button" class="btn" onclick="Javascript:TagEditor.CloseAlbumDialog();">Close</button>
+                <button type="button" class="btn-small" onclick="Javascript:TagEditor.CloseAlbumDialog();">Close</button>
             </td>
         </tr>
     </table>

@@ -23,33 +23,24 @@
         {
             SearchSummary summary = new SearchSummary();
 
-            List<V_SONG_LIST> songList;
-
             using (var ctx = NewSongListContext())
             {
-                IQueryable<V_SONG_LIST> query = GetQuery(criteria, ctx);
+                p_get_search_summary_Result results = ctx.p_get_search_summary(
+                    criteria.ArtistName, 
+                    criteria.AlbumName, 
+                    criteria.SongTitle, 
+                    criteria.Genre, 
+                    criteria.CreateDate)
+                    .FirstOrDefault();
 
-                songList = query.ToList();
+                summary.AlbumCount = results.AlbumCount.HasValue ? results.AlbumCount.Value : 0;
+                summary.ArtistCount = results.ArtistCount.HasValue ? results.ArtistCount.Value : 0;
+                summary.GenreCount = results.GenreCount.HasValue ? results.GenreCount.Value : 0;
+                summary.SongCount = results.SongCount.HasValue ? results.SongCount.Value : 0;
+                summary.NewestSongDate = results.NewestSongDate.HasValue ? results.NewestSongDate.Value.ToShortDateString() : string.Empty;
             }
-
-            summary.ArtistCount = songList.Select(a => a.ARTIST_NAME).Distinct().Count();
-            summary.AlbumCount = songList.Select(a => a.ALBUM_NAME).Distinct().Count();
-            summary.SongCount = songList.Select(a => a.SONG_ID).Distinct().Count();
-            summary.GenreCount = songList.Select(a => a.GENRE).Distinct().Count();
-
+            
             return summary;
-        }
-
-        public static string GetNewestSongDate()
-        {
-            List<V_SONG_LIST> sl;
-
-            using (var ctx = NewSongListContext())
-            {
-                sl = ctx.V_SONG_LISTS.ToList();
-            }
-
-            return sl.Count > 0 ? sl.Select(a => a.CREATE_DATE).Max().ToShortDateString() : string.Empty;
         }
 
         private static IQueryable<V_SONG_LIST> GetQuery(SearchCriteria criteria, Entities ctx)

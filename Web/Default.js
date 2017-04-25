@@ -61,7 +61,7 @@ var Default = (function () {
                         data: 'AFP',
                         orderable: false,
                         render: function (data, type, full) {
-                            return '<button class="edit-row btn btn-default" title="View/Edit Song Data" type="button" data-key="' + data + '?' + full.SONG_ID + '">Details</button>' +
+                            return '<button class="edit-row btn-small btn-info" title="View/Edit Song Data" type="button" data-key="' + data + '?' + full.SONG_ID + '">Details</button>' +
                                 '<br />' +
                                 '<audio style="width:150px; padding-top:8px" controls="controls" preload="metadata" title="Listen" src="' + full.AudioFile + '">Audio Not Supported</audio>';
                         }
@@ -232,6 +232,7 @@ var Default = (function () {
                     $('#albumCount').html(response.d.AlbumCount);
                     $('#songCount').html(response.d.SongCount);
                     $('#genreCount').html(response.d.GenreCount);
+                    $('#LastUpdated').html(response.d.NewestSongDate);
 
                     $('#loading').dialog('close');
                 },
@@ -245,6 +246,7 @@ var Default = (function () {
             return false;
         },
 
+        /*
         GetNewestSongDate: function () {
             $.ajax({
                 // async: false,
@@ -274,7 +276,7 @@ var Default = (function () {
 
             return false;
         },
-
+        */
         ResetForm: function () {
             $('#artistSearch').val('');
             $('#albumSearch').val('');
@@ -404,7 +406,7 @@ $(document).ready(function () {
     });
 
     TagEditor.DocumentReady();
-    Default.GetNewestSongDate();
+    //Default.GetNewestSongDate();
 
     var qsParams = Default.GetQueryStringParameters();
     var artistID = qsParams['ArtistID'];

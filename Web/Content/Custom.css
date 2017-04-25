@@ -97,16 +97,19 @@
 {
     font-weight:bold;
 }
+/*
+.btn{
+    font-size: 11px;
+}
+*/
 .navbar-nav > li > a, .navbar-brand {
     padding-top:4px !important; 
     padding-bottom:0 !important;
-    height: 34px;
+    height: 30px;
+    /*color:#f1f1f1 !important;*/
 }
-.navbar {min-height:34px !important;}
+.navbar {min-height:30px !important;}
 
-.dataTableHeader {
-    background-color:lightsteelblue;
-}
 body{
     background-color:floralwhite;
 }

@@ -98,6 +98,12 @@ $(document).ready(function () {
 
     TagEditor.DocumentReady();
 
+    if (!Site.IsAdminUser()) {
+        $('#ProcessFile').prop('disabled', true);
+        $('#ProcessFiles').prop('disabled', true);
+        $('#lstUploadedFiles').prop('disabled', true);
+    }
+
     $('#lstUploadedFiles').change(function () {
         FileUpload.GetTags();
     });

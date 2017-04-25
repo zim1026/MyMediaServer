@@ -9,7 +9,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <button type="button" oncancel="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
+                <button type="button" class="btn btn-primary" onclick="JavaScript: UserSecurity.AddNewUser();">Add New User</button>
             </div>
         </div>
 
@@ -88,9 +88,9 @@
 
         <div class="row">
             <div class="col-sm-12 text-center">
-                <button type="button" class="btn btn-primary" id="SaveUser" onclick="JavaScript: UserSecurity.SaveUserDetails();">Save</button>
+                <button type="button" class="btn-small btn-warning" id="SaveUser" onclick="JavaScript: UserSecurity.SaveUserDetails();">Save</button>
                 &nbsp;&nbsp;
-                <button type="button" class="btn btn-default" id="CloseUserDialog" onclick="JavaScript: UserSecurity.CloseUserDialog();">Close</button>
+                <button type="button" class="btn-small" id="CloseUserDialog" onclick="JavaScript: UserSecurity.CloseUserDialog();">Close</button>
             </div>
         </div>
 

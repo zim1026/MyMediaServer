@@ -84,6 +84,9 @@
       <DependentUpon>Media.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="p_get_search_summary_Result.cs">
+      <DependentUpon>Media.tt</DependentUpon>
+    </Compile>
     <Compile Include="SearchCriteria.cs" />
     <Compile Include="SearchSummary.cs" />
     <Compile Include="SONG.cs">

@@ -3,7 +3,7 @@
 <%@ Register TagPrefix="TE" TagName="TagEditor" Src="TagEditor.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeaderContent" runat="server">
-    <link type="text/css" rel="stylesheet" href="Content/Playlist.css" />
+    <link href="Playlist.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
@@ -23,19 +23,19 @@
                             <tr>
                                 <td style="padding-right:10px">
                                     <button type="button" id="PlayAll" title="Play All Songs In Playlist"
-                                        class="btn btn-primary" onclick="JavaScript:Playlist.PlayAll();">Play All</button>
+                                        class="btn-small btn-primary" onclick="JavaScript:Playlist.PlayAll();">Play All</button>
                                 </td>
                                 <td style="padding-right:10px">
                                     <button type="button" id="Previous" title="Go Back to Previous Song"
-                                        class="btn btn-default" onclick="JavaScript: Playlist.Previous();">Previous</button>
+                                        class="btn-small btn-info" onclick="JavaScript: Playlist.Previous();">Previous</button>
                                 </td>
                                 <td style="padding-right:30px">
                                     <button type="button" id="Next" title="Skip to Next Song"
-                                        class="btn btn-default" onclick="JavaScript: Playlist.Next();">Next</button>
+                                        class="btn-small btn-info" onclick="JavaScript: Playlist.Next();">Next</button>
                                 </td>
                                 <td>
                                     <button type="button" id="RemoveSelected" title="Remove Selected Song From Playlist"
-                                        class="btn btn-default" onclick="JavaScript:Playlist.RemoveSelection();">Remove From List</button>
+                                        class="btn-small btn-danger" onclick="JavaScript:Playlist.RemoveSelection();">Remove From List</button>
                                 </td>
                             </tr>
                         </table>
