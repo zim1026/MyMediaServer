@@ -6,6 +6,9 @@ var Playlist = (function () {
     return{
         GetUserPlaylist: function () {
             $('#lstPlayListFiles').empty();
+            $('#SongCount').html('');
+            $('#AudioPlayer').attr('src', '');
+
             var lstPlayListFiles = $('#lstPlayListFiles');
 
             $.ajax({
@@ -39,7 +42,19 @@ var Playlist = (function () {
                 }
             });
 
-            $('#lstPlayListFiles').prop("selectedIndex", 0);
+            if ($('#lstPlayListFiles option').length > 0) {
+                $('#lstPlayListFiles').prop("selectedIndex", 0);
+            }
+            else {
+                $('#AudioPlayer').prop('disabled', true);
+                $('#PlayAll').prop('disabled', true);
+                $('#Previous').prop('disabled', true);
+                $('#Next').prop('disabled', true);
+                $('#RemoveSelected').prop('disabled', true);
+
+                alert('You currently have no songs in your playlist.' + '\n\n' +
+                      'Songs can be added to your playlist by searching for them from the Home screen, and clicking the "Playlist?" checkbox.');
+            }
 
             return false;
         },
@@ -123,13 +138,6 @@ var Playlist = (function () {
             $('#audioPlayer').hide();
             $('#TagEditorClose').hide();
             $('#Playlister').hide();
-            $('#editArtist').prop('disabled', true);
-            $('#editAlbum').prop('disabled', true);
-            $('#UpdateFileTag').prop('disabled', true);
-            $('#fileUpload').prop('disabled', true);
-            $('#uploadImage').prop('disabled', true);
-            $('#ddlArtist').prop('disabled', true);
-            $('#ddlAlbum').prop('disabled', true);
 
             return false;
         },
@@ -173,9 +181,13 @@ var Playlist = (function () {
 
                 TagEditor.DocumentReady();
 
-                Playlist.GetUserPlaylist('1');
-
-                $('#NowPlaying').hide();
+                Playlist.GetUserPlaylist();
+                if ($('#lstPlayListFiles option').length > 0) {
+                    Playlist.PlayAll();
+                }
+                else {
+                    $('#NowPlaying').hide();
+                }
 
                 return false;
             }
@@ -216,7 +228,9 @@ $(document).ready(function () {
 
     Playlist.GetUserPlaylist();
 
-    Playlist.PlayAll();
+    if ($('#lstPlayListFiles option').length > 0) {
+        Playlist.PlayAll();
+    }
 
     $('#lstPlayListFiles').change(function () {
         Playlist.PlayAll();

@@ -48,13 +48,16 @@
                     <ul id="MasterNavBarLinks" class="nav navbar-nav">
                         <li id="MasterNavBarHomeLink"><a href="Default.aspx">Home</a></li>
                         <li id="MasterNavBarPlaylistLink"><a href="Playlist.aspx">Playlist</a></li>
+                        <li id="MasterNavBarUploadsLink"><a href="FileUpload.aspx">Uploads</a></li>
                         <% if(IsAdmin) %>
                         <% { %>    
-                            <li id="MasterNavBarUploadsLink"><a href="FileUpload.aspx">Uploads</a></li>    
                             <li id="MasterNavBarUserManagementLink"><a href="UserSecurity.aspx">User Management</a></li>
                         <% } %>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
+                        <li>
+                            <asp:Button runat="server" ID="cmdDecrypt" OnClick="cmdDecrypt_Click" Text="Decrypt" CssClass="btn-small btn-link" />
+                        </li>
                         <li><a href="Logout.aspx"><%=Username %>: Logout</a></li>
                     </ul>
                 </div>

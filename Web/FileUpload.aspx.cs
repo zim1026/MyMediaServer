@@ -10,9 +10,14 @@
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsAuthorizedUser || !IsAdmin)
+            if (!IsAuthorizedUser)
             {
                 Response.Redirect("AccessDenied.aspx");
+            }
+
+            if (!IsAdmin)
+            {
+                lstUploadedFiles.Enabled = false;
             }
             
             if (!IsPostBack)
@@ -27,10 +32,13 @@
             {
                 try
                 {
-                    if (file.FileName.Contains("+"))
-                        file.SaveAs(GetUploadPath + Path.DirectorySeparatorChar + Path.GetFileName(file.FileName).Replace("+", "-"));
-                    else
-                        file.SaveAs(GetUploadPath + Path.DirectorySeparatorChar + Path.GetFileName(file.FileName));
+                    if (Path.GetExtension(file.FileName).ToUpper() == ".MP3")
+                    {
+                        if (file.FileName.Contains("+"))
+                            file.SaveAs(GetUploadPath + Path.DirectorySeparatorChar + Path.GetFileName(file.FileName).Replace("+", "-"));
+                        else
+                            file.SaveAs(GetUploadPath + Path.DirectorySeparatorChar + Path.GetFileName(file.FileName));
+                    }
                 }
                 catch (Exception ex1)
                 {

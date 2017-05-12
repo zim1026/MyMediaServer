@@ -12,6 +12,8 @@ namespace MediaLibrary
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Entities : DbContext
     {
@@ -31,5 +33,30 @@ namespace MediaLibrary
         public virtual DbSet<USER_PLAYLIST> USER_PLAYLISTS { get; set; }
         public virtual DbSet<USER_SECURITY> USER_SECURITYS { get; set; }
         public virtual DbSet<V_SONG_LIST> V_SONG_LISTS { get; set; }
+    
+        public virtual ObjectResult<p_get_search_summary_Result> p_get_search_summary(string artistName, string albumName, string songTitle, string genre, Nullable<System.DateTime> dateAdded)
+        {
+            var artistNameParameter = artistName != null ?
+                new ObjectParameter("ArtistName", artistName) :
+                new ObjectParameter("ArtistName", typeof(string));
+    
+            var albumNameParameter = albumName != null ?
+                new ObjectParameter("AlbumName", albumName) :
+                new ObjectParameter("AlbumName", typeof(string));
+    
+            var songTitleParameter = songTitle != null ?
+                new ObjectParameter("SongTitle", songTitle) :
+                new ObjectParameter("SongTitle", typeof(string));
+    
+            var genreParameter = genre != null ?
+                new ObjectParameter("Genre", genre) :
+                new ObjectParameter("Genre", typeof(string));
+    
+            var dateAddedParameter = dateAdded.HasValue ?
+                new ObjectParameter("DateAdded", dateAdded) :
+                new ObjectParameter("DateAdded", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<p_get_search_summary_Result>("p_get_search_summary", artistNameParameter, albumNameParameter, songTitleParameter, genreParameter, dateAddedParameter);
+        }
     }
 }

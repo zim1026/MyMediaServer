@@ -8,13 +8,13 @@
         {
             this.Page.Title = "My Media Server: " + this.Page.Title;
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            cmdDecrypt.Visible = IsAdmin;
         }
 
-        protected bool IsAdmin 
+        protected bool IsAdmin
         { 
             get {
                 if (Session["user"] != null)
@@ -40,6 +40,14 @@
                 {
                     return string.Empty;
                 }
+            }
+        }
+
+        protected void cmdDecrypt_Click(object sender, EventArgs e)
+        {
+            if (IsAdmin)
+            {
+                Global.DecryptWebConfig(true);
             }
         }
     }

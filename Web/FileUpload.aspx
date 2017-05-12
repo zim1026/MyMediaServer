@@ -19,7 +19,7 @@
                                     <CWC:MultiFileUpload runat="server" ID="FileUploader" MaxFiles="25" />
                                 </td>
                                 <td style="vertical-align:top; padding-left:15px">
-                                    <asp:Button runat="server" ID="cmdUpload" OnClick="cmdUpload_Click" Text="Upload" CssClass="btn btn-primary" />
+                                    <asp:Button runat="server" ID="cmdUpload" OnClick="cmdUpload_Click" Text="Upload" CssClass="btn-small btn-primary" />
                                 </td>
                             </tr>
                         </table>
@@ -31,10 +31,10 @@
                 <div class="panel-heading">Uploaded Songs</div>
                 <div class="row">
                     <div class="col-sm-12" style="padding-bottom:4px;">
-                        <button type="button" id="ProcessFile" class="btn btn-default" onclick="JavaScript: FileUpload.ProcessSelectedFile();"
+                        <button type="button" id="ProcessFile" class="btn-small btn-info" onclick="JavaScript: FileUpload.ProcessSelectedFile();"
                             title="Process the Selected Uploaded File">Process Selected File</button>
-                        &nbsp;
-                        <button type="button" id="ProcessFiles" class="btn btn-primary" onclick="JavaScript: FileUpload.ProcessAllFiles();"
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" id="ProcessFiles" class="btn-small btn-primary" onclick="JavaScript: FileUpload.ProcessAllFiles();"
                             title="Process All Uploaded Files">Process All Files</button>
                     </div>
                 </div>

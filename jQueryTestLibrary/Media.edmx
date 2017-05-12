@@ -186,6 +186,13 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="p_get_search_summary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="MP3">
+          <Parameter Name="ArtistName" Type="varchar" Mode="In" />
+          <Parameter Name="AlbumName" Type="varchar" Mode="In" />
+          <Parameter Name="SongTitle" Type="varchar" Mode="In" />
+          <Parameter Name="Genre" Type="varchar" Mode="In" />
+          <Parameter Name="DateAdded" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="MediaEntitiesStoreContainer">
           <EntitySet Name="ALBUM" EntityType="Self.ALBUM" Schema="MP3" store:Type="Tables" />
           <EntitySet Name="ARTIST" EntityType="Self.ARTIST" Schema="MP3" store:Type="Tables" />
@@ -230,7 +237,7 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             <End Role="USER_SECURITY" EntitySet="USER_SECURITY" />
             <End Role="USER_PLAYLIST" EntitySet="USER_PLAYLIST" />
           </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -355,6 +362,13 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
             <End Role="USER_PLAYLIST" EntitySet="USER_PLAYLISTS" />
           </AssociationSet>
           <EntitySet Name="V_SONG_LISTS" EntityType="MediaEntities.V_SONG_LIST" />
+          <FunctionImport Name="p_get_search_summary" ReturnType="Collection(MediaEntities.p_get_search_summary_Result)">
+            <Parameter Name="ArtistName" Mode="In" Type="String" />
+            <Parameter Name="AlbumName" Mode="In" Type="String" />
+            <Parameter Name="SongTitle" Mode="In" Type="String" />
+            <Parameter Name="Genre" Mode="In" Type="String" />
+            <Parameter Name="DateAdded" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="USER_PLAYLIST">
           <Key>
@@ -439,6 +453,13 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
           <Property Name="BITRATE" Type="Decimal" Precision="38" Scale="0" />
           <Property Name="LYRICS_FLAG" Type="Boolean" Nullable="false" />
         </EntityType>
+        <ComplexType Name="p_get_search_summary_Result">
+          <Property Type="Int32" Name="ArtistCount" Nullable="true" />
+          <Property Type="Int32" Name="AlbumCount" Nullable="true" />
+          <Property Type="Int32" Name="SongCount" Nullable="true" />
+          <Property Type="Int32" Name="GenreCount" Nullable="true" />
+          <Property Type="DateTime" Name="NewestSongDate" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -573,6 +594,17 @@ warning 6002: The table/view 'Media.MP3.V_SONG_LIST' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="p_get_search_summary" FunctionName="MediaEntities.Store.p_get_search_summary">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MediaEntities.p_get_search_summary_Result">
+                <ScalarProperty Name="ArtistCount" ColumnName="ArtistCount" />
+                <ScalarProperty Name="AlbumCount" ColumnName="AlbumCount" />
+                <ScalarProperty Name="SongCount" ColumnName="SongCount" />
+                <ScalarProperty Name="GenreCount" ColumnName="GenreCount" />
+                <ScalarProperty Name="NewestSongDate" ColumnName="NewestSongDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

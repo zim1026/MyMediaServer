@@ -95,9 +95,9 @@
                         </div>
                         <div class="col-sm-12 text-center">
                             <div style="padding-top:15px;" class="text-center">
-                                <button type="button" id="search" class="btn btn-primary" onclick="JavaScript:Default.QuerySongList();">Search</button>
+                                <button type="button" id="search" class="btn-small btn-primary" onclick="JavaScript:Default.QuerySongList();">Search</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" id="reset" class="btn" onclick="JavaScript:Default.ResetForm();">Reset</button>
+                                <button type="button" id="reset" class="btn-small" onclick="JavaScript:Default.ResetForm();">Reset</button>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                     <th>Album</th>
                     <th>Title</th>
                     <th>Duration</th>
-                    <th>Playlisted</th>
+                    <th>Playlist?</th>
                     <th>Genre</th>
                     <th>Added</th>
                 </tr>

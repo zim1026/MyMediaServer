@@ -143,7 +143,9 @@
         {
             return SongManager.GetSongs(albumId);
         }
+        #endregion Song WebMethods
 
+        #region Search
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public void GetSongList(string artistSearch, string albumSearch, string songSearch, string genreSearch, string dateAddedSearch)
@@ -151,7 +153,7 @@
             if (this.Context.Session["user"] != null)
             {
                 ResetSessionStartTime(this.Context);
-                
+
                 decimal userSecurityID = (this.Context.Session["user"] as USER_SECURITY).USER_SECURITY_ID;
 
                 RequestData requestData = DataTablesHelper.ParseSentRequestParameters(this.Context);
@@ -203,15 +205,7 @@
                 throw new Exception("Unable to retrieve user information from current session.");
             }
         }
-        #endregion Song WebMethods
-
-        #region Metrics
-        [WebMethod]
-        public string GetNewestSongDate()
-        {
-            return SongListManager.GetNewestSongDate();
-        }
-
+        
         [WebMethod]
         public SearchSummary GetSearchResultsSummary(string artistSearch, string albumSearch, string songSearch, string genreSearch, string dateAddedSearch)
         {
@@ -219,7 +213,7 @@
 
             return SongListManager.GetSearchSummary(criteria);
         }
-        #endregion Metrics
+        #endregion Search
 
         #region File Management
         [WebMethod]
@@ -698,6 +692,18 @@
         public USER_SECURITY SaveUser(USER_SECURITY user)
         {
             return UserSecurityManager.Save(user);
+        }
+
+        [WebMethod(EnableSession = true)]
+        public bool IsAdminUser()
+        {
+            if(Session["user"] != null){
+                return ((USER_SECURITY)Session["user"]).ADMIN_FLAG;
+            }
+            else
+            {
+                throw new Exception("Unable to retrieve user information from current session.");
+            }
         }
         #endregion User Management
 

@@ -40,7 +40,7 @@ var UserSecurity = (function () {
                         data: 'USER_SECURITY_ID',
                         orderable: false,
                         render: function (data, type, full) {
-                            return '<button class="edit-row btn btn-default" title="View/Edit User" type="button" data-key="' + data + '">Edit</button>';
+                            return '<button class="edit-row btn-small btn-info" title="View/Edit User" type="button" data-key="' + data + '">Edit</button>';
                         }
                     },
 

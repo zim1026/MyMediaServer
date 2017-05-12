@@ -21,10 +21,6 @@ var TagEditor = (function () {
                 }
             });
 
-            $('#ddlArtist').change(function () {
-                TagEditor.PopulateAlbums();
-            });
-
             $('#fileUpload').on('change', function (e) {
                 var files = e.target.files;
                 if (files.length > 0) {
@@ -65,6 +61,20 @@ var TagEditor = (function () {
                     }
                 }
             });
+        },
+
+        CheckAlbumValue: function(){
+            if ($('#ddlAlbum').val() < 0) {
+                $('#albumText').val('');
+                $('#albumText').show();
+                $('#editAlbum').prop('disabled', true);
+            }
+            else {
+                $('#albumText').hide();
+                $('#editAlbum').prop('disabled', false);
+            }
+
+            return false;
         },
 
         PopulateArtists: function () {
@@ -110,6 +120,18 @@ var TagEditor = (function () {
 
         PopulateAlbums: function () {
             TagEditor.GetArtistAlbums($('#ddlArtist').val());
+
+            if ($('#ddlArtist').val() > 0) {
+                $('#editArtist').prop('disabled', false);
+                $('#artistText').hide();
+            }
+            else {
+                $('#editArtist').prop('disabled', true);
+                $('#artistText').val('');
+                $('#artistText').show();
+            }
+            
+            TagEditor.CheckAlbumValue();
 
             return false;
         },
@@ -301,6 +323,16 @@ var TagEditor = (function () {
             });
 
             TagEditor.GetPlaylistStatus();
+
+            if (!Site.IsAdminUser()) {
+                //$('#editArtist').prop('disabled', true);
+                //$('#editAlbum').prop('disabled', true);
+                $('#UpdateFileTag').prop('disabled', true);
+                $('#fileUpload').prop('disabled', true);
+                $('#uploadImage').prop('disabled', true);
+                $('#SaveArtist').prop('disabled', true);
+                $('#SaveAlbum').prop('disabled', true);
+            }
 
             return false;
         },
@@ -755,7 +787,21 @@ var TagEditor = (function () {
             });
 
             return false;
-        }
+        },
 
+        DeleteTagData: function () {
+
+            return false;
+        },
+
+        UpdateAlbumSongs: function () {
+
+            return false;
+        },
+
+        RebuildFilePath: function () {
+
+            return false;
+        }
     };
 }());
